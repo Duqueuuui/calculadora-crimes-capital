@@ -18,7 +18,6 @@
             min-height: 100vh;
         }
 
-        /* Header Moderno */
         .header {
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
@@ -28,7 +27,6 @@
             align-items: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             position: relative;
-            overflow: hidden;
         }
 
         .header::before {
@@ -50,8 +48,6 @@
         .logo {
             font-size: 1.4rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .nav-links {
@@ -67,7 +63,6 @@
             padding: 8px 16px;
             border-radius: 20px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .nav-links a:hover {
@@ -78,10 +73,8 @@
         .nav-links a.active {
             color: white;
             background: rgba(255,255,255,0.15);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        /* Main Container */
         .container {
             display: flex;
             gap: 25px;
@@ -91,7 +84,6 @@
             align-items: flex-start;
         }
 
-        /* Left Panel */
         .left-panel {
             flex: 1;
             min-width: 650px;
@@ -107,15 +99,13 @@
             margin-bottom: 15px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            user-select: none;
         }
 
         .panel-header h2 {
             font-size: 1.9rem;
             font-weight: 600;
-            letter-spacing: 0.3px;
             cursor: pointer;
-            position: relative;
+            user-select: none;
         }
 
         .search-box {
@@ -127,20 +117,14 @@
             color: #2d3748;
             border-radius: 25px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
         }
 
         .search-box:focus {
             outline: none;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transform: translateY(-1px);
         }
 
-        .search-box::placeholder {
-            color: #718096;
-        }
-
-        /* Modal de Password */
+        /* Password Modal */
         .password-modal {
             display: none;
             position: fixed;
@@ -157,7 +141,6 @@
 
         .password-modal.active {
             display: flex;
-            animation: fadeIn 0.3s ease;
         }
 
         .password-box {
@@ -191,12 +174,6 @@
             text-align: center;
             letter-spacing: 3px;
             margin-bottom: 20px;
-            transition: border-color 0.3s;
-        }
-
-        .password-input:focus {
-            outline: none;
-            border-color: #3182ce;
         }
 
         .password-btn {
@@ -209,11 +186,11 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
+            margin-bottom: 10px;
         }
 
-        .password-btn:hover {
-            transform: translateY(-2px);
+        .password-btn.secondary {
+            background: #718096;
         }
 
         .password-error {
@@ -223,7 +200,7 @@
             display: none;
         }
 
-        /* Painel de Admin */
+        /* Admin Panel */
         .admin-panel {
             display: none;
             background: rgba(255,255,255,0.95);
@@ -232,21 +209,16 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             border: 2px solid #3182ce;
-            animation: slideDown 0.3s ease;
         }
 
         .admin-panel.active {
             display: block;
+            animation: slideDown 0.3s ease;
         }
 
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .admin-header {
@@ -274,10 +246,6 @@
             font-weight: 600;
         }
 
-        .admin-close:hover {
-            background: #c53030;
-        }
-
         .admin-select {
             width: 100%;
             padding: 12px;
@@ -285,7 +253,6 @@
             border: 1px solid #cbd5e0;
             border-radius: 8px;
             font-size: 1rem;
-            background: white;
         }
 
         .admin-form {
@@ -314,12 +281,6 @@
             font-size: 0.95rem;
         }
 
-        .admin-field input:focus, .admin-field select:focus {
-            outline: none;
-            border-color: #3182ce;
-            box-shadow: 0 0 0 3px rgba(49,130,206,0.1);
-        }
-
         .admin-buttons {
             display: flex;
             gap: 10px;
@@ -337,10 +298,6 @@
             flex: 1;
         }
 
-        .btn-save:hover {
-            background: #2c5282;
-        }
-
         .btn-export {
             background: #059669;
             color: white;
@@ -352,11 +309,7 @@
             font-size: 1rem;
         }
 
-        .btn-export:hover {
-            background: #047857;
-        }
-
-        /* Category Sections */
+        /* Categories */
         .category {
             background: rgba(255,255,255,0.7);
             margin-bottom: 12px;
@@ -381,7 +334,6 @@
             font-size: 1.15rem;
             font-weight: 600;
             text-align: left;
-            position: relative;
         }
 
         .category-header:hover {
@@ -390,7 +342,7 @@
         }
 
         .category-header .arrow {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s;
             font-size: 1.3rem;
             width: 30px;
             height: 30px;
@@ -410,15 +362,14 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 18px;
             padding: 25px;
-            background: transparent;
         }
 
         .category.expanded .crimes-grid {
             display: grid;
-            animation: fadeInGrid 0.4s ease;
+            animation: fadeIn 0.4s ease;
         }
 
-        @keyframes fadeInGrid {
+        @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -429,23 +380,10 @@
             color: #2d3748;
             padding: 20px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             border-radius: 10px;
             border-left: 5px solid;
-            position: relative;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-
-        .crime-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.4) 100%);
-            pointer-events: none;
         }
 
         .crime-card:hover {
@@ -455,7 +393,6 @@
 
         .crime-card.selected {
             box-shadow: 0 0 0 3px #3182ce, 0 8px 25px rgba(49,130,206,0.3);
-            transform: translateY(-2px);
         }
 
         .crime-number {
@@ -464,7 +401,6 @@
             margin-bottom: 8px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .crime-name {
@@ -473,7 +409,6 @@
             margin-bottom: 18px;
             min-height: 45px;
             color: #1a365d;
-            line-height: 1.3;
         }
 
         .crime-details {
@@ -494,12 +429,9 @@
         .crime-sentence {
             color: #3182ce;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
-        /* Right Panel - Summary Moderno e Compacto */
+        /* Right Panel */
         .right-panel {
             width: 400px;
             position: sticky;
@@ -513,19 +445,6 @@
             padding: 25px;
             border-radius: 16px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .summary-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .summary-title {
@@ -533,8 +452,6 @@
             font-size: 2rem;
             margin-bottom: 20px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            position: relative;
         }
 
         .summary-title::after {
@@ -554,32 +471,15 @@
             padding-right: 5px;
         }
 
-        .selected-crimes::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .selected-crimes::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.3);
-            border-radius: 3px;
-        }
-
         .selected-crime-item {
             background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
             padding: 15px;
             margin-bottom: 10px;
             border-radius: 10px;
-            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .selected-crime-item:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateX(5px);
         }
 
         .selected-crime-info h4 {
@@ -591,8 +491,6 @@
         .selected-crime-info p {
             font-size: 0.85rem;
             color: #cbd5e0;
-            margin-bottom: 2px;
-            line-height: 1.3;
         }
 
         .remove-btn {
@@ -607,9 +505,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            line-height: 1;
-            flex-shrink: 0;
+            transition: all 0.3s;
         }
 
         .remove-btn:hover {
@@ -617,7 +513,6 @@
             transform: rotate(90deg);
         }
 
-        /* Totais Compactos */
         .totals-section {
             border-top: 1px solid rgba(255,255,255,0.2);
             padding-top: 20px;
@@ -643,10 +538,8 @@
             font-size: 1.6rem;
             font-weight: 700;
             color: #4ade80;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* Sentenças em Grid Compacto */
         .sentences-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -667,14 +560,12 @@
             color: #a0c4e8;
             margin-bottom: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .sentence-value {
             font-size: 1.3rem;
             font-weight: 700;
             color: #fcd34d;
-            line-height: 1.2;
         }
 
         .sentence-value .exceeded {
@@ -722,9 +613,8 @@
             font-size: 0.95rem;
             font-weight: 600;
             border-radius: 8px;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .btn-copy {
@@ -735,8 +625,6 @@
         .btn-copy:hover {
             background: #3182ce;
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(49,130,206,0.4);
         }
 
         .btn-clear {
@@ -747,11 +635,8 @@
         .btn-clear:hover {
             background: #4ade80;
             color: #1a202c;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(74,222,128,0.4);
         }
 
-        /* Color coding */
         .severity-low { border-left-color: #4ade80; }
         .severity-medium { border-left-color: #fbbf24; }
         .severity-high { border-left-color: #f87171; }
@@ -760,22 +645,10 @@
         .empty-state {
             text-align: center;
             color: #718096;
-            padding: 40px 20px;
+            padding: 40px;
             font-style: italic;
-            font-size: 1rem;
         }
 
-        /* Animações */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .category {
-            animation: slideIn 0.5s ease forwards;
-        }
-
-        /* Responsive */
         @media (max-width: 1200px) {
             .container {
                 flex-direction: column;
@@ -783,34 +656,10 @@
             .right-panel {
                 width: 100%;
                 position: static;
-                align-self: auto;
-            }
-            .left-panel {
-                min-width: auto;
             }
         }
 
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .panel-header {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .search-box {
-                width: 100%;
-            }
-            .sentences-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
             .admin-form {
                 grid-template-columns: 1fr;
             }
@@ -818,14 +667,14 @@
     </style>
 </head>
 <body>
-    <!-- Modal de Password -->
+    <!-- Password Modal -->
     <div class="password-modal" id="passwordModal">
         <div class="password-box">
             <h3>🔒 Acesso Restrito</h3>
             <p>Insere a palavra-passe para aceder ao painel de administração</p>
-            <input type="password" class="password-input" id="passwordInput" placeholder="••••••" maxlength="20">
+            <input type="password" class="password-input" id="passwordInput" placeholder="••••••">
             <button class="password-btn" onclick="checkPassword()">Entrar</button>
-            <button class="password-btn" style="background: #718096; margin-top: 10px;" onclick="closePasswordModal()">Cancelar</button>
+            <button class="password-btn secondary" onclick="closePasswordModal()">Cancelar</button>
             <div class="password-error" id="passwordError">Palavra-passe incorreta!</div>
         </div>
     </div>
@@ -834,9 +683,9 @@
         <div class="header-left">
             <div class="logo">Calculadora de Crimes Capital</div>
             <nav class="nav-links">
-                <a href="#" class="active" onclick="showTab('penal', event)">Código Penal</a>
-                <a href="https://estradas.pt" target="_blank" onclick="externalLink(event)">Código da Estrada</a>
-                <a href="https://estradasimplificado.pt" target="_blank" onclick="externalLink(event)">Código da Estrada Simplificado</a>
+                <a href="https://drive.google.com/file/d/1C4UG_KCtV_xfdYLr1hFGDc5QQhOyqD6w/view" target="_blank">Código Penal</a>
+                <a href="#" onclick="return false;">Código da Estrada</a>
+                <a href="#" onclick="return false;">Código da Estrada Simplificado</a>
             </nav>
         </div>
     </header>
@@ -848,7 +697,7 @@
                 <input type="text" class="search-box" id="searchBox" placeholder="Pesquisar Nome ou Artigo" oninput="searchCrimes(this.value)">
             </div>
 
-            <!-- Painel de Administração (escondido por padrão) -->
+            <!-- Admin Panel -->
             <div class="admin-panel" id="adminPanel">
                 <div class="admin-header">
                     <div class="admin-title">⚙️ Painel de Administração</div>
@@ -909,9 +758,7 @@
                 </div>
             </div>
 
-            <div id="categoriesContainer">
-                <!-- Categories will be loaded here -->
-            </div>
+            <div id="categoriesContainer"></div>
         </div>
 
         <div class="right-panel">
@@ -958,95 +805,174 @@
     </div>
 
     <script>
-        // CONFIGURAÇÃO - ALTERA AQUI A TUA PASSWORD
-        const ADMIN_PASSWORD = 'capital2024'; // ← MUDA ISTO PARA A TUA PASSWORD
-        
-        // Dados iniciais dos crimes (vêm do crimes.json na versão web)
-        let crimesData = {
+        // PASSWORD - ALTERA AQUI
+        const ADMIN_PASSWORD = 'capital2024';
+
+        // DADOS ORGANIZADOS SEGUNDO O ÍNDICE DO CÓDIGO PENAL
+        const CRIMES_DATA = {
             categories: [
                 {
-                    id: "road",
-                    name: "Contraordenações Rodoviárias",
+                    id: "rodoviarias",
+                    name: "Contraordenações Rodoviárias (Livro D)",
                     crimes: [
-                        { id: "road-1", article: "27", name: "Limites Gerais de Velocidade (Leve)", fine: 3000, min: 0, rec: 0, max: 0, points: 1, severity: "low" },
-                        { id: "road-2", article: "28", name: "Excesso de Velocidade (Grave)", fine: 15000, min: 0, rec: 0, max: 0, points: 2, severity: "medium" }
+                        { id: "c84", article: "84", name: "Condução sem Capacete", fine: 1500, min: 0, rec: 0, max: 0, points: 3, severity: "low" },
+                        { id: "c85", article: "85", name: "Condução sem Carta", fine: 5400, min: 0, rec: 0, max: 1, points: 0, severity: "medium" },
+                        { id: "c86", article: "86", name: "Condução de Viatura sem Matrícula", fine: 18000, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c87", article: "87", name: "Condução de Viatura sem Calçado", fine: 5400, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c88", article: "88", name: "Condução Desordeira", fine: 90000, min: 0, rec: 0, max: 0, points: 0, severity: "high" },
+                        { id: "c89", article: "89", name: "Condução em Sentido Proibido", fine: 9000, min: 0, rec: 0, max: 3, points: 0, severity: "high" },
+                        { id: "c90", article: "90", name: "Condução sob Influência de Álcool", fine: 36000, min: 0, rec: 1, max: 3, points: 0, severity: "high" },
+                        { id: "c91", article: "91", name: "Condução sob Influência de Estupefacientes", fine: 36000, min: 0, rec: 1, max: 3, points: 0, severity: "high" },
+                        { id: "c92", article: "92", name: "Destruição de Património Nacional", fine: 36000, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c93", article: "93", name: "Estacionamento Indevido", fine: 5400, min: 0, rec: 0, max: 3, points: 2, severity: "medium" },
+                        { id: "c94a", article: "94.1", name: "Excesso de Velocidade (Leve)", fine: 5400, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c94b", article: "94.2", name: "Excesso de Velocidade (Grave)", fine: 27000, min: 0, rec: 1, max: 3, points: 2, severity: "medium" },
+                        { id: "c94c", article: "94.3", name: "Excesso de Velocidade (Muito Grave)", fine: 45000, min: 0, rec: 2, max: 5, points: 4, severity: "high" },
+                        { id: "c95", article: "95", name: "Infração de Sinais", fine: 10800, min: 0, rec: 0, max: 0, points: 4, severity: "medium" },
+                        { id: "c96", article: "96", name: "Inversão de Marcha Indevida", fine: 18000, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c97", article: "97", name: "Estacionamento Proibido", fine: 6300, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c98a", article: "98.1", name: "Uso de Neons Ilegais", fine: 7200, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c98b", article: "98.2", name: "Vidros Escurecidos Ilegais", fine: 4500, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c98c", article: "98.3", name: "Alteração de Características Ilegal", fine: 3150, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c99", article: "99", name: "Obstrução da Via Pública", fine: 2700, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c100", article: "100", name: "Participação em Corrida Ilegal", fine: 36000, min: 0, rec: 1, max: 2, points: 0, severity: "high" },
+                        { id: "c101", article: "101", name: "Passagem de Linha Contínua", fine: 2700, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c102", article: "102", name: "Abuso Excessivo da Buzina", fine: 3600, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c103", article: "103", name: "Uso de Aparelho Eletrónico durante Condução", fine: 18000, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c104", article: "104", name: "Taxa de Veículo Apreendida", fine: 1800, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c105", article: "105", name: "Circular de Luzes Apagadas", fine: 6300, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c106", article: "106", name: "Má Conservação da Viatura", fine: 13500, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c107a", article: "107.1", name: "Viatura sem Seguro", fine: 27000, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c107b", article: "107.2", name: "Viatura sem Inspeção", fine: 18000, min: 0, rec: 0, max: 0, points: 0, severity: "medium" },
+                        { id: "c108", article: "108", name: "Paragem de Viatura Não Permitida", fine: 1800, min: 0, rec: 0, max: 0, points: 0, severity: "low" }
                     ]
                 },
                 {
-                    id: "nautical",
+                    id: "nauticas",
                     name: "Contraordenações Náuticas",
                     crimes: []
                 },
                 {
-                    id: "persons",
-                    name: "Crimes Contra as Pessoas",
+                    id: "pessoas",
+                    name: "Crimes contra as Pessoas (Livro C - Título I)",
                     crimes: [
-                        { id: "persons-1", article: "1", name: "Homicídio", fine: 150000, min: 8, rec: 12, max: 16, points: 0, severity: "high" },
-                        { id: "persons-2", article: "2", name: "Homicídio Qualificado", fine: 300000, min: 12, rec: 19, max: 20, points: 0, severity: "extreme" },
-                        { id: "persons-3", article: "3", name: "Homicídio Privilegiado", fine: 30000, min: 1, rec: 3, max: 5, points: 0, severity: "medium" },
-                        { id: "persons-4", article: "4", name: "Ofensa à Integridade Física Simples", fine: 25000, min: 0, rec: 6, max: 6, points: 0, severity: "low" },
-                        { id: "persons-5", article: "5", name: "Ofensa à Integridade Física Grave", fine: 50000, min: 2, rec: 8, max: 10, points: 0, severity: "medium" },
-                        { id: "persons-6", article: "6", name: "Ofensa à Integridade Física Qualificada", fine: 75000, min: 0, rec: 2, max: 4, points: 0, severity: "medium" },
-                        { id: "persons-7", article: "7", name: "Ofensa à Integridade Física por Negligência", fine: 75000, min: 0, rec: 2, max: 2, points: 0, severity: "medium" },
-                        { id: "persons-8", article: "8", name: "Participação em Rixa", fine: 50000, min: 0, rec: 2, max: 2, points: 0, severity: "medium" },
-                        { id: "persons-9", article: "9", name: "Violência Doméstica", fine: 100000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
-                        { id: "persons-10", article: "10", name: "Maustratos", fine: 50000, min: 0, rec: 2, max: 3, points: 0, severity: "medium" },
-                        { id: "persons-11", article: "11", name: "Violação de Regras de Segurança", fine: 25000, min: 0, rec: 1, max: 2, points: 0, severity: "low" },
-                        { id: "persons-12", article: "12", name: "Ameaça", fine: 20000, min: 0, rec: 0, max: 1, points: 0, severity: "low" }
+                        // Capítulo I - Crimes contra a vida (Art. 1-3)
+                        { id: "c1", article: "1", name: "Homicídio", fine: 900000, min: 8, rec: 12, max: 16, points: 0, severity: "high" },
+                        { id: "c2", article: "2", name: "Homicídio Qualificado", fine: 1350000, min: 12, rec: 18, max: 25, points: 0, severity: "extreme" },
+                        { id: "c3", article: "3", name: "Homicídio Privilegiado", fine: 540000, min: 8, rec: 12, max: 16, points: 0, severity: "high" },
+                        // Capítulo II - Crimes contra a integridade física (Art. 4-11)
+                        { id: "c4", article: "4", name: "Ofensa à Integridade Física Simples", fine: 36000, min: 0, rec: 1, max: 3, points: 0, severity: "low" },
+                        { id: "c5", article: "5", name: "Ofensa à Integridade Física Grave", fine: 90000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
+                        { id: "c6", article: "6", name: "Ofensa à Integridade Física Qualificada", fine: 180000, min: 3, rec: 7, max: 12, points: 0, severity: "high" },
+                        { id: "c7", article: "7", name: "Ofensa à Integridade Física por Negligência", fine: 18000, min: 0, rec: 0, max: 1, points: 0, severity: "low" },
+                        { id: "c8", article: "8", name: "Participação em Rixa", fine: 180000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c9", article: "9", name: "Violência Doméstica", fine: 72000, min: 2, rec: 3, max: 5, points: 0, severity: "high" },
+                        { id: "c10", article: "10", name: "Maustratos", fine: 90000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
+                        { id: "c11", article: "11", name: "Violação das Regras de Segurança", fine: 45000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
+                        // Capítulo III - Crimes contra a liberdade pessoal (Art. 12-18)
+                        { id: "c12", article: "12", name: "Ameaça", fine: 45000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c13", article: "13", name: "Coação", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "medium" },
+                        { id: "c14", article: "14", name: "Sequestro", fine: 135000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
+                        { id: "c15", article: "15", name: "Escravidão", fine: 270000, min: 5, rec: 7, max: 10, points: 0, severity: "extreme" },
+                        { id: "c16", article: "16", name: "Tráfico de Pessoas", fine: 270000, min: 3, rec: 6, max: 10, points: 0, severity: "extreme" },
+                        { id: "c17", article: "17", name: "Rapto", fine: 180000, min: 3, rec: 9, max: 15, points: 0, severity: "high" },
+                        { id: "c18", article: "18", name: "Tomada de Reféns", fine: 225000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
+                        // Capítulo IV - Crimes contra a honra (Art. 22-25)
+                        { id: "c22", article: "22", name: "Difamação", fine: 90000, min: 0, rec: 0, max: 1, points: 0, severity: "medium" },
+                        { id: "c23", article: "23", name: "Injúria", fine: 45000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c24", article: "24", name: "Equiparação a Injúria ou Difamação", fine: 45000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c25", article: "25", name: "Publicidade e Calúnia", fine: 90000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        // Capítulo V - Crimes contra a reserva de vida privada (Art. 26-27)
+                        { id: "c26", article: "26", name: "Violação de Domicílio", fine: 54000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c27", article: "27", name: "Introdução em Lugar Vedado ao Público", fine: 18000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        // Capítulo VI - Crimes contra outros bens jurídicos pessoais (Art. 32-34)
+                        { id: "c32", article: "32", name: "Gravações e Fotografias Ilícitas", fine: 18000, min: 0, rec: 0, max: 1, points: 0, severity: "low" },
+                        { id: "c33", article: "33", name: "Omissão de Auxílio", fine: 27000, min: 0, rec: 0, max: 2, points: 0, severity: "low" },
+                        { id: "c34", article: "34", name: "Subtracção às Garantias do Estado", fine: 135000, min: 2, rec: 6, max: 10, points: 0, severity: "high" }
                     ]
                 },
                 {
-                    id: "property",
-                    name: "Crimes contra o Património",
+                    id: "patrimonio",
+                    name: "Crimes contra o Património (Livro C - Título II)",
                     crimes: [
-                        { id: "prop-1", article: "13", name: "Roubo", fine: 100000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
-                        { id: "prop-2", article: "14", name: "Roubo Qualificado", fine: 200000, min: 3, rec: 8, max: 12, points: 0, severity: "extreme" },
-                        { id: "prop-3", article: "15", name: "Furto", fine: 50000, min: 0, rec: 2, max: 4, points: 0, severity: "medium" },
-                        { id: "prop-4", article: "16", name: "Furto Qualificado", fine: 100000, min: 1, rec: 4, max: 6, points: 0, severity: "high" },
-                        { id: "prop-5", article: "17", name: "Apropriação Indébita", fine: 30000, min: 0, rec: 1, max: 2, points: 0, severity: "low" },
-                        { id: "prop-6", article: "18", name: "Dano", fine: 25000, min: 0, rec: 1, max: 3, points: 0, severity: "low" },
-                        { id: "prop-7", article: "19", name: "Dano Qualificado", fine: 75000, min: 1, rec: 3, max: 5, points: 0, severity: "medium" },
-                        { id: "prop-8", article: "20", name: "Extorsão", fine: 150000, min: 2, rec: 6, max: 10, points: 0, severity: "high" }
+                        { id: "c35", article: "35", name: "Furto", fine: 45000, min: 0, rec: 1, max: 3, points: 0, severity: "low" },
+                        { id: "c36", article: "36", name: "Furto Qualificado", fine: 90000, min: 2, rec: 4, max: 8, points: 0, severity: "high" },
+                        { id: "c37", article: "37", name: "Abuso de Confiança", fine: 180000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
+                        { id: "c38", article: "38", name: "Furto de Uso de Veículo", fine: 90000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c39", article: "39", name: "Apropriação Ilícita (Coisa Achada)", fine: 18000, min: 0, rec: 0, max: 1, points: 0, severity: "low" },
+                        { id: "c40", article: "40", name: "Roubo", fine: 360000, min: 1, rec: 4, max: 15, points: 0, severity: "extreme" },
+                        { id: "c41", article: "41", name: "Dano", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "medium" },
+                        { id: "c42", article: "42", name: "Burla", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "medium" },
+                        { id: "c43", article: "43", name: "Extorsão", fine: 270000, min: 0, rec: 2, max: 5, points: 0, severity: "high" },
+                        { id: "c44", article: "44", name: "Apropriação Ilícita", fine: 60000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c45", article: "45", name: "Administração Danosa", fine: 90000, min: 0, rec: 2, max: 5, points: 0, severity: "high" }
                     ]
                 },
                 {
-                    id: "cultural",
+                    id: "identidade",
                     name: "Crimes contra a Identidade Cultural",
                     crimes: []
                 },
                 {
-                    id: "society",
-                    name: "Crimes contra a Vida em Sociedade",
+                    id: "sociedade",
+                    name: "Crimes contra a Vida em Sociedade (Livro C - Título III)",
                     crimes: [
-                        { id: "soc-1", article: "21", name: "Posse de Arma Ilegal", fine: 80000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
-                        { id: "soc-2", article: "22", name: "Posse de Munições Ilegais", fine: 40000, min: 0, rec: 2, max: 3, points: 0, severity: "medium" },
-                        { id: "soc-3", article: "23", name: "Tráfico de Armas", fine: 250000, min: 5, rec: 10, max: 15, points: 0, severity: "extreme" },
-                        { id: "soc-4", article: "24", name: "Posse de Drogas (Consumo)", fine: 30000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
-                        { id: "soc-5", article: "25", name: "Tráfico de Drogas", fine: 300000, min: 5, rec: 12, max: 20, points: 0, severity: "extreme" },
-                        { id: "soc-6", article: "26", name: "Condução de Veículo em Estado de Embriaguez", fine: 50000, min: 0, rec: 1, max: 2, points: 3, severity: "medium" }
+                        { id: "c46", article: "46", name: "Falsificação ou Contrafação de Documento", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "medium" },
+                        { id: "c47", article: "47", name: "Atestado Falso", fine: 180000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c48", article: "48", name: "Uso de Documento de Identificação Alheio", fine: 135000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c49", article: "49", name: "Tráfico de Substâncias Ilícitas", fine: 360000, min: 4, rec: 9, max: 15, points: 0, severity: "extreme" },
+                        { id: "c50", article: "50", name: "Contrafação de Moeda", fine: 360000, min: 3, rec: 7, max: 12, points: 0, severity: "high" },
+                        { id: "c51", article: "51", name: "Aquisição de Moeda Falsa", fine: 360000, min: 3, rec: 7, max: 12, points: 0, severity: "high" },
+                        { id: "c52", article: "52", name: "Posse de Arma Proibida", fine: 135000, min: 2, rec: 4, max: 8, points: 0, severity: "high" },
+                        { id: "c53", article: "53", name: "Perda de Arma", fine: 0, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "c54", article: "54", name: "Violação do Espaço Aéreo (Drone)", fine: 36000, min: 0, rec: 0, max: 2, points: 0, severity: "medium" },
+                        { id: "c55", article: "55", name: "Atentado à Segurança de Transporte Rodoviário", fine: 90000, min: 1, rec: 4, max: 9, points: 0, severity: "high" },
+                        { id: "c56", article: "56", name: "Condução Perigosa de Veículo Rodoviário", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "high" },
+                        { id: "c57", article: "57", name: "Associação Criminosa", fine: 450000, min: 3, rec: 7, max: 12, points: 0, severity: "extreme" },
+                        { id: "c58", article: "58", name: "Participação em Motim", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "high" },
+                        { id: "c59", article: "59", name: "Desobediência à Ordem de Dispersão", fine: 90000, min: 0, rec: 0, max: 2, points: 0, severity: "medium" },
+                        { id: "c60", article: "60", name: "Ameaça com Prática de Crime", fine: 180000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c61", article: "61", name: "Abuso de Designação, Sinal ou Uniforme", fine: 135000, min: 0, rec: 0, max: 3, points: 0, severity: "medium" }
                     ]
                 },
                 {
-                    id: "state",
-                    name: "Crimes contra o Estado",
+                    id: "estado",
+                    name: "Crimes contra o Estado (Livro C - Título IV)",
                     crimes: [
-                        { id: "state-1", article: "27", name: "Corrupção Ativa", fine: 200000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
-                        { id: "state-2", article: "28", name: "Corrupção Passiva", fine: 200000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
-                        { id: "state-3", article: "29", name: "Prevaricação", fine: 150000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
-                        { id: "state-4", article: "30", name: "Falsificação de Documentos", fine: 100000, min: 1, rec: 3, max: 6, points: 0, severity: "high" },
-                        { id: "state-5", article: "31", name: "Falsidade Testemunhal", fine: 80000, min: 0, rec: 2, max: 4, points: 0, severity: "medium" }
+                        { id: "c62", article: "62", name: "Traição à Pátria", fine: 900000, min: 10, rec: 15, max: 20, points: 0, severity: "extreme" },
+                        { id: "c63", article: "63", name: "Violação de Segredo de Estado", fine: 540000, min: 2, rec: 6, max: 10, points: 0, severity: "extreme" },
+                        { id: "c64", article: "64", name: "Alteração Violenta do Estado de Direito", fine: 360000, min: 3, rec: 8, max: 15, points: 0, severity: "extreme" },
+                        { id: "c65", article: "65", name: "Sabotagem", fine: 270000, min: 3, rec: 6, max: 10, points: 0, severity: "high" },
+                        { id: "c66", article: "66", name: "Perturbação de Órgão Constitucional", fine: 180000, min: 0, rec: 1, max: 3, points: 0, severity: "medium" },
+                        { id: "c67", article: "67", name: "Tráfico de Influências", fine: 180000, min: 0, rec: 2, max: 5, points: 0, severity: "high" },
+                        { id: "c68", article: "68", name: "Resistência e Coação sobre Funcionário", fine: 36000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
+                        { id: "c69", article: "69", name: "Desobediência", fine: 36000, min: 0, rec: 0, max: 1, points: 0, severity: "low" },
+                        { id: "c70", article: "70", name: "Tirada de Presos", fine: 180000, min: 5, rec: 7, max: 10, points: 0, severity: "high" },
+                        { id: "c71", article: "71", name: "Evasão", fine: 45000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
+                        { id: "c72", article: "72", name: "Usurpação de Funções", fine: 90000, min: 0, rec: 0, max: 2, points: 0, severity: "medium" },
+                        { id: "c73", article: "73", name: "Falsidade de Depoimento", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "medium" },
+                        { id: "c74", article: "74", name: "Suborno", fine: 180000, min: 0, rec: 1, max: 3, points: 0, severity: "high" },
+                        { id: "c75", article: "75", name: "Denúncia Caluniosa", fine: 180000, min: 0, rec: 2, max: 8, points: 0, severity: "high" },
+                        { id: "c76", article: "76", name: "Simulação de Crime", fine: 90000, min: 0, rec: 0, max: 1, points: 0, severity: "medium" },
+                        { id: "c77", article: "77", name: "Favorecimento Pessoal", fine: 180000, min: 0, rec: 2, max: 5, points: 0, severity: "high" },
+                        { id: "c78", article: "78", name: "Favorecimento por Funcionário", fine: 180000, min: 2, rec: 4, max: 7, points: 0, severity: "high" },
+                        { id: "c79", article: "79", name: "Branqueamento", fine: 0, min: 0, rec: 6, max: 12, points: 0, severity: "extreme" },
+                        { id: "c80", article: "80", name: "Denegação de Justiça e Prevaricação", fine: 360000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
+                        { id: "c81", article: "81", name: "Denegação de Justiça (Funcionário)", fine: 90000, min: 0, rec: 0, max: 2, points: 0, severity: "medium" },
+                        { id: "c82", article: "82", name: "Peculato", fine: 180000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
+                        { id: "c83", article: "83", name: "Abuso de Poder", fine: 135000, min: 0, rec: 1, max: 3, points: 0, severity: "high" }
                     ]
                 }
             ]
         };
 
+        let crimesData = JSON.parse(JSON.stringify(CRIMES_DATA));
         const MAX_PRISON_YEARS = 25;
         let selectedCrimes = [];
         let currentEditingCrime = null;
         let clickCount = 0;
         let clickTimer = null;
 
-        // Carregar dados (tenta do localStorage primeiro, senão usa os defaults)
         function loadData() {
             const saved = localStorage.getItem('crimesDataCapital');
             if (saved) {
@@ -1055,16 +981,10 @@
             renderCategories();
         }
 
-        // Sistema de Password
         function handleTitleClick() {
             clickCount++;
-            
             if (clickTimer) clearTimeout(clickTimer);
-            
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-            }, 2000);
-
+            clickTimer = setTimeout(() => clickCount = 0, 2000);
             if (clickCount === 5) {
                 document.getElementById('passwordModal').classList.add('active');
                 document.getElementById('passwordInput').focus();
@@ -1091,7 +1011,6 @@
             document.getElementById('passwordError').style.display = 'none';
         }
 
-        // Permitir Enter na password
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('passwordInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') checkPassword();
@@ -1112,7 +1031,6 @@
         function populateCategorySelect() {
             const select = document.getElementById('categorySelect');
             select.innerHTML = '<option value="">Selecionar Categoria...</option>';
-            
             crimesData.categories.forEach(cat => {
                 const option = document.createElement('option');
                 option.value = cat.id;
@@ -1124,15 +1042,12 @@
         function loadCrimesForEdit() {
             const catId = document.getElementById('categorySelect').value;
             const crimeSelect = document.getElementById('crimeSelect');
-            
             crimeSelect.innerHTML = '<option value="">Selecionar Crime para Editar...</option>';
             document.getElementById('editForm').style.display = 'none';
             document.getElementById('adminButtons').style.display = 'none';
-
             if (!catId) return;
 
             const category = crimesData.categories.find(c => c.id === catId);
-            
             const newOption = document.createElement('option');
             newOption.value = 'NEW';
             newOption.textContent = '+ Criar Novo Crime';
@@ -1152,13 +1067,11 @@
             const crimeId = document.getElementById('crimeSelect').value;
             const form = document.getElementById('editForm');
             const buttons = document.getElementById('adminButtons');
-
             if (!crimeId) {
                 form.style.display = 'none';
                 buttons.style.display = 'none';
                 return;
             }
-
             form.style.display = 'grid';
             buttons.style.display = 'flex';
 
@@ -1176,7 +1089,6 @@
                 const catId = document.getElementById('categorySelect').value;
                 const category = crimesData.categories.find(c => c.id === catId);
                 const crime = category.crimes.find(c => c.id === crimeId);
-                
                 document.getElementById('editArticle').value = crime.article;
                 document.getElementById('editName').value = crime.name;
                 document.getElementById('editFine').value = crime.fine;
@@ -1185,7 +1097,6 @@
                 document.getElementById('editMax').value = crime.max;
                 document.getElementById('editPoints').value = crime.points || 0;
                 document.getElementById('editSeverity').value = crime.severity || 'low';
-                
                 currentEditingCrime = { ...crime, categoryId: catId, isNew: false };
             }
         }
@@ -1193,7 +1104,6 @@
         function saveCrime() {
             const catId = document.getElementById('categorySelect').value;
             const category = crimesData.categories.find(c => c.id === catId);
-            
             const crimeData = {
                 article: document.getElementById('editArticle').value,
                 name: document.getElementById('editName').value,
@@ -1208,22 +1118,19 @@
             if (currentEditingCrime.isNew) {
                 crimeData.id = `${catId}-${Date.now()}`;
                 category.crimes.push(crimeData);
-                alert('✅ Novo crime criado com sucesso!\n\n⚠️ NOTA: Esta alteração só é visível no teu browser.\nPara todos verem, exporta o JSON e atualiza no servidor.');
+                alert('✅ Novo crime criado!');
             } else {
                 const index = category.crimes.findIndex(c => c.id === currentEditingCrime.id);
                 if (index > -1) {
                     crimeData.id = currentEditingCrime.id;
                     category.crimes[index] = crimeData;
-                    alert('✅ Crime atualizado!\n\n⚠️ NOTA: Esta alteração só é visível no teu browser.\nPara todos verem, exporta o JSON e atualiza no servidor.');
+                    alert('✅ Crime atualizado!');
                 }
             }
 
-            // Guardar no localStorage (apenas local)
             localStorage.setItem('crimesDataCapital', JSON.stringify(crimesData));
-            
             renderCategories();
             loadCrimesForEdit();
-            
             document.getElementById('crimeSelect').value = '';
             document.getElementById('editForm').style.display = 'none';
             document.getElementById('adminButtons').style.display = 'none';
@@ -1232,37 +1139,27 @@
         function exportData() {
             const dataStr = JSON.stringify(crimesData, null, 2);
             const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            
             const link = document.createElement('a');
             link.href = URL.createObjectURL(dataBlob);
             link.download = 'crimes-capital-config.json';
             link.click();
-            
-            alert('📥 JSON exportado!\n\nPara atualizar para todos:\n1. Abre este ficheiro\n2. Copia todo o conteúdo\n3. Cola no ficheiro crimes.json do servidor\n4. Faz commit/push (GitHub) ou reupload (Vercel/Netlify)');
+            alert('📥 JSON exportado! Para atualizar o site online, substitui este ficheiro no GitHub.');
         }
 
         function renderCategories() {
             const container = document.getElementById('categoriesContainer');
             container.innerHTML = '';
-
             crimesData.categories.forEach((category, index) => {
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'category';
                 categoryDiv.id = `cat-${category.id}`;
-                categoryDiv.style.animationDelay = `${index * 0.1}s`;
-
                 const header = document.createElement('button');
                 header.className = 'category-header';
                 header.onclick = () => toggleCategory(category.id);
-                header.innerHTML = `
-                    <span>${category.name}</span>
-                    <span class="arrow">⌄</span>
-                `;
-
+                header.innerHTML = `<span>${category.name}</span><span class="arrow">⌄</span>`;
                 const grid = document.createElement('div');
                 grid.className = 'crimes-grid';
                 grid.id = `grid-${category.id}`;
-
                 if (category.crimes && category.crimes.length > 0) {
                     category.crimes.forEach(crime => {
                         const card = createCrimeCard(crime);
@@ -1271,7 +1168,6 @@
                 } else {
                     grid.innerHTML = '<div style="color: #666; grid-column: 1/-1; text-align: center; padding: 30px; font-style: italic;">Nenhum crime registado nesta categoria</div>';
                 }
-
                 categoryDiv.appendChild(header);
                 categoryDiv.appendChild(grid);
                 container.appendChild(categoryDiv);
@@ -1283,10 +1179,8 @@
             card.className = `crime-card severity-${crime.severity || 'low'}`;
             card.dataset.id = crime.id;
             card.onclick = () => selectCrime(crime);
-
             const isSelected = selectedCrimes.find(c => c.id === crime.id);
             if (isSelected) card.classList.add('selected');
-
             card.innerHTML = `
                 <div class="crime-number">Artigo nº ${crime.article}</div>
                 <div class="crime-name">${crime.name}</div>
@@ -1305,13 +1199,8 @@
 
         function selectCrime(crime) {
             const index = selectedCrimes.findIndex(c => c.id === crime.id);
-            
-            if (index > -1) {
-                selectedCrimes.splice(index, 1);
-            } else {
-                selectedCrimes.push(crime);
-            }
-            
+            if (index > -1) selectedCrimes.splice(index, 1);
+            else selectedCrimes.push(crime);
             updateUI();
         }
 
@@ -1330,15 +1219,9 @@
         function updateUI() {
             document.querySelectorAll('.crime-card').forEach(card => {
                 const id = card.dataset.id;
-                if (selectedCrimes.find(c => c.id === id)) {
-                    card.classList.add('selected');
-                } else {
-                    card.classList.remove('selected');
-                }
+                card.classList.toggle('selected', selectedCrimes.find(c => c.id === id));
             });
-
             const container = document.getElementById('selectedCrimes');
-            
             if (selectedCrimes.length === 0) {
                 container.innerHTML = '<div class="empty-state">Nenhum crime selecionado</div>';
             } else {
@@ -1353,20 +1236,16 @@
                     </div>
                 `).join('');
             }
-
             const totalFine = selectedCrimes.reduce((sum, c) => sum + c.fine, 0);
             const totalPoints = selectedCrimes.reduce((sum, c) => sum + (c.points || 0), 0);
-            
             let minTotal = 0, recTotal = 0, maxTotal = 0;
             selectedCrimes.forEach(c => {
                 minTotal += c.min;
                 recTotal += c.rec;
                 maxTotal += c.max;
             });
-
             document.getElementById('totalFine').textContent = totalFine.toLocaleString() + ' €';
             document.getElementById('totalPoints').textContent = totalPoints;
-            
             document.getElementById('minSentence').innerHTML = formatSentenceValue(minTotal);
             document.getElementById('recSentence').innerHTML = formatSentenceValue(recTotal);
             document.getElementById('maxSentence').innerHTML = formatSentenceValue(maxTotal);
@@ -1374,24 +1253,17 @@
 
         function searchCrimes(query) {
             const lowerQuery = query.toLowerCase();
-            
             crimesData.categories.forEach(category => {
                 const grid = document.getElementById(`grid-${category.id}`);
                 const cards = grid.querySelectorAll('.crime-card');
                 let hasVisible = false;
-
                 cards.forEach(card => {
                     const name = card.querySelector('.crime-name').textContent.toLowerCase();
                     const article = card.querySelector('.crime-number').textContent.toLowerCase();
-                    
-                    if (name.includes(lowerQuery) || article.includes(lowerQuery)) {
-                        card.style.display = 'block';
-                        hasVisible = true;
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    const visible = name.includes(lowerQuery) || article.includes(lowerQuery);
+                    card.style.display = visible ? 'block' : 'none';
+                    if (visible) hasVisible = true;
                 });
-
                 if (query.length > 0 && hasVisible) {
                     document.getElementById(`cat-${category.id}`).classList.add('expanded');
                 }
@@ -1400,17 +1272,13 @@
 
         function copyArticles() {
             if (selectedCrimes.length === 0) {
-                alert('Nenhum crime selecionado para copiar!');
+                alert('Nenhum crime selecionado!');
                 return;
             }
-
             const text = selectedCrimes.map(c => 
                 `Artigo ${c.article}: ${c.name} | Multa: €${c.fine.toLocaleString()} | Pena: ${c.min}-${c.rec}-${c.max} anos`
             ).join('\n');
-
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Artigos copiados para a clipboard!');
-            });
+            navigator.clipboard.writeText(text).then(() => alert('Artigos copiados!'));
         }
 
         function clearAll() {
@@ -1418,17 +1286,6 @@
             updateUI();
         }
 
-        function showTab(tab, event) {
-            event.preventDefault();
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        function externalLink(event) {
-            // Links externos abrem normalmente
-        }
-
-        // Inicializar
         loadData();
     </script>
 </body>
