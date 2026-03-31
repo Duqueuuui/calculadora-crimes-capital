@@ -1179,7 +1179,6 @@
             card.className = `crime-card severity-${crime.severity || 'low'}`;
             card.dataset.id = crime.id;
             card.onclick = () => selectCrime(crime);
-            // Não adicionar classe selected aqui, deixar o updateUI tratar disso
             card.innerHTML = `
                 <div class="crime-number">Artigo nº ${crime.article}</div>
                 <div class="crime-name">${crime.name}</div>
@@ -1196,15 +1195,20 @@
             cat.classList.toggle('expanded');
         }
 
+        // ALTERAÇÃO: Agora sempre adiciona, nunca remove
         function selectCrime(crime) {
-            const index = selectedCrimes.findIndex(c => c.id === crime.id);
-            if (index > -1) selectedCrimes.splice(index, 1);
-            else selectedCrimes.push(crime);
+            // Criar uma cópia do crime com um ID único de instância
+            const crimeInstance = { ...crime, instanceId: Date.now() + Math.random() };
+            selectedCrimes.push(crimeInstance);
             updateUI();
         }
 
-        function removeCrime(id) {
-            selectedCrimes = selectedCrimes.filter(c => c.id !== id);
+        // ALTERAÇÃO: Remove apenas a instância específica clicada no X
+        function removeCrime(instanceId) {
+            const index = selectedCrimes.findIndex(c => c.instanceId === instanceId);
+            if (index > -1) {
+                selectedCrimes.splice(index, 1);
+            }
             updateUI();
         }
 
@@ -1216,36 +1220,35 @@
         }
 
         function updateUI() {
-            // CORREÇÃO: Remover selected de todos primeiro, depois adicionar só aos selecionados
+            // Atualizar cards - destacar se houver pelo menos uma instância desse crime
             document.querySelectorAll('.crime-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Adicionar classe selected apenas aos cards que estão em selectedCrimes
-            selectedCrimes.forEach(crime => {
-                const card = document.querySelector(`.crime-card[data-id="${crime.id}"]`);
-                if (card) {
+                const crimeId = card.dataset.id;
+                const hasInstance = selectedCrimes.some(c => c.id === crimeId);
+                if (hasInstance) {
                     card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
                 }
             });
             
-            // Atualizar painel direito
+            // Atualizar painel direito - mostrar todas as instâncias
             const container = document.getElementById('selectedCrimes');
             if (selectedCrimes.length === 0) {
                 container.innerHTML = '<div class="empty-state">Nenhum crime selecionado</div>';
             } else {
-                container.innerHTML = selectedCrimes.map(crime => `
+                container.innerHTML = selectedCrimes.map((crime, index) => `
                     <div class="selected-crime-item">
                         <div class="selected-crime-info">
                             <h4>Artigo nº ${crime.article}</h4>
                             <p>${crime.name}</p>
                             <p>€ ${crime.fine.toLocaleString()} | ${crime.min}-${crime.rec}-${crime.max} anos</p>
                         </div>
-                        <button class="remove-btn" onclick="removeCrime('${crime.id}')">×</button>
+                        <button class="remove-btn" onclick="removeCrime(${crime.instanceId})">×</button>
                     </div>
                 `).join('');
             }
             
+            // Calcular totais (agora soma tudo, incluindo duplicados)
             const totalFine = selectedCrimes.reduce((sum, c) => sum + c.fine, 0);
             const totalPoints = selectedCrimes.reduce((sum, c) => sum + (c.points || 0), 0);
             let minTotal = 0, recTotal = 0, maxTotal = 0;
