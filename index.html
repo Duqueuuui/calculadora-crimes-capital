@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Crimes Capital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #e0e5ec 0%, #c8d0e7 100%);
+            color: #2d3748;
+            min-height: 100vh;
+        }
+
+        /* Header Moderno */
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf, #ff006e);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #a0c4e8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            gap: 25px;
+            padding: 30px;
+            max-width: 1500px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        /* Left Panel */
+        .left-panel {
+            flex: 1;
+            min-width: 650px;
+        }
+
+        .panel-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+
+        .panel-header h2 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .search-box {
+            background: rgba(255,255,255,0.95);
+            border: none;
+            padding: 12px 20px;
+            width: 280px;
+            font-size: 0.95rem;
+            color: #2d3748;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transform: translateY(-1px);
+        }
+
+        .search-box::placeholder {
+            color: #718096;
+        }
+
+        /* Modal de Password */
+        .password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .password-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .password-box {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-box h3 {
+            color: #1e3a5f;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .password-box p {
+            color: #718096;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #3182ce;
+        }
+
+        .password-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .password-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .password-error {
+            color: #e53e3e;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Painel de Admin */
+        .admin-panel {
+            display: none;
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border: 2px solid #3182ce;
+            animation: slideDown 0.3s ease;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .admin-title {
+            font-size: 1.4rem;
+            color: #1e3a5f;
+            font-weight: 700;
+        }
+
+        .admin-close {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .admin-close:hover {
+            background: #c53030;
+        }
+
+        .admin-select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .admin-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-field label {
+            font-size: 0.85rem;
+            color: #4a5568;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .admin-field input, .admin-field select {
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .admin-field input:focus, .admin-field select:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49,130,206,0.1);
+        }
+
+        .admin-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-save {
+            background: #3182ce;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        .btn-save:hover {
+            background: #2c5282;
+        }
+
+        .btn-export {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .btn-export:hover {
+            background: #047857;
+        }
+
+        /* Category Sections */
+        .category {
+            background: rgba(255,255,255,0.7);
+            margin-bottom: 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #2d4a6f 0%, #3d5a7f 100%);
+            color: white;
+            padding: 22px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            position: relative;
+        }
+
+        .category-header:hover {
+            background: linear-gradient(135deg, #3d5a7f 0%, #4d6a8f 100%);
+            transform: translateX(5px);
+        }
+
+        .category-header .arrow {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.3rem;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .category.expanded .arrow {
+            transform: rotate(180deg);
+        }
+
+        .crimes-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
+            padding: 25px;
+            background: transparent;
+        }
+
+        .category.expanded .crimes-grid {
+            display: grid;
+            animation: fadeInGrid 0.4s ease;
+        }
+
+        @keyframes fadeInGrid {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Crime Cards */
+        .crime-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f0f4f8 100%);
+            color: #2d3748;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+            border-left: 5px solid;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .crime-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.4) 100%);
+            pointer-events: none;
+        }
+
+        .crime-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .crime-card.selected {
+            box-shadow: 0 0 0 3px #3182ce, 0 8px 25px rgba(49,130,206,0.3);
+            transform: translateY(-2px);
+        }
+
+        .crime-number {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .crime-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            min-height: 45px;
+            color: #1a365d;
+            line-height: 1.3;
+        }
+
+        .crime-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .crime-fine {
+            color: #059669;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .crime-sentence {
+            color: #3182ce;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Right Panel - Summary Moderno e Compacto */
+        .right-panel {
+            width: 400px;
+            position: sticky;
+            top: 30px;
+            align-self: flex-start;
+        }
+
+        .summary-box {
+            background: linear-gradient(145deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .summary-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .summary-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .selected-crimes {
+            margin-bottom: 20px;
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .selected-crimes::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .selected-crimes::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+
+        .selected-crime-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .selected-crime-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(5px);
+        }
+
+        .selected-crime-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            color: #00d4ff;
+        }
+
+        .selected-crime-info p {
+            font-size: 0.85rem;
+            color: #cbd5e0;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+
+        .remove-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .remove-btn:hover {
+            background: rgba(255,107,107,0.3);
+            transform: rotate(90deg);
+        }
+
+        /* Totais Compactos */
+        .totals-section {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .total-fine-box {
+            background: rgba(74, 222, 128, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .total-fine-label {
+            font-size: 0.9rem;
+            color: #a0c4e8;
+            margin-bottom: 5px;
+        }
+
+        .total-fine-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #4ade80;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Sentenças em Grid Compacto */
+        .sentences-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .sentence-box {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sentence-label {
+            font-size: 0.75rem;
+            color: #a0c4e8;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sentence-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fcd34d;
+            line-height: 1.2;
+        }
+
+        .sentence-value .exceeded {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .points-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+
+        .points-label {
+            font-size: 0.95rem;
+            color: #fcd34d;
+            font-weight: 600;
+        }
+
+        .points-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px;
+            border: 2px solid;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-copy {
+            border-color: #3182ce;
+            color: #63b3ed;
+        }
+
+        .btn-copy:hover {
+            background: #3182ce;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(49,130,206,0.4);
+        }
+
+        .btn-clear {
+            border-color: #4ade80;
+            color: #4ade80;
+        }
+
+        .btn-clear:hover {
+            background: #4ade80;
+            color: #1a202c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74,222,128,0.4);
+        }
+
+        /* Color coding */
+        .severity-low { border-left-color: #4ade80; }
+        .severity-medium { border-left-color: #fbbf24; }
+        .severity-high { border-left-color: #f87171; }
+        .severity-extreme { border-left-color: #dc2626; }
+
+        .empty-state {
+            text-align: center;
+            color: #718096;
+            padding: 40px 20px;
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        /* Animações */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .category {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+            }
+            .right-panel {
+                width: 100%;
+                position: static;
+                align-self: auto;
+            }
+            .left-panel {
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .panel-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .search-box {
+                width: 100%;
+            }
+            .sentences-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modal de Password -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h3>🔒 Acesso Restrito</h3>
+            <p>Insere a palavra-passe para aceder ao painel de administração</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="••••••" maxlength="20">
+            <button class="password-btn" onclick="checkPassword()">Entrar</button>
+            <button class="password-btn" style="background: #718096; margin-top: 10px;" onclick="closePasswordModal()">Cancelar</button>
+            <div class="password-error" id="passwordError">Palavra-passe incorreta!</div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">Calculadora de Crimes Capital</div>
+            <nav class="nav-links">
+                <a href="#" class="active" onclick="showTab('penal', event)">Código Penal</a>
+                <a href="https://estradas.pt" target="_blank" onclick="externalLink(event)">Código da Estrada</a>
+                <a href="https://estradasimplificado.pt" target="_blank" onclick="externalLink(event)">Código da Estrada Simplificado</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="left-panel">
+            <div class="panel-header">
+                <h2 onclick="handleTitleClick()">Artigos penais</h2>
+                <input type="text" class="search-box" id="searchBox" placeholder="Pesquisar Nome ou Artigo" oninput="searchCrimes(this.value)">
+            </div>
+
+            <!-- Painel de Administração (escondido por padrão) -->
+            <div class="admin-panel" id="adminPanel">
+                <div class="admin-header">
+                    <div class="admin-title">⚙️ Painel de Administração</div>
+                    <button class="admin-close" onclick="closeAdmin()">Fechar</button>
+                </div>
+                
+                <select class="admin-select" id="categorySelect" onchange="loadCrimesForEdit()">
+                    <option value="">Selecionar Categoria...</option>
+                </select>
+
+                <select class="admin-select" id="crimeSelect" onchange="loadCrimeData()">
+                    <option value="">Selecionar Crime para Editar...</option>
+                </select>
+
+                <div class="admin-form" id="editForm" style="display: none;">
+                    <div class="admin-field">
+                        <label>Número do Artigo</label>
+                        <input type="text" id="editArticle" placeholder="Ex: 1">
+                    </div>
+                    <div class="admin-field">
+                        <label>Nome do Crime</label>
+                        <input type="text" id="editName" placeholder="Ex: Homicídio">
+                    </div>
+                    <div class="admin-field">
+                        <label>Multa (€)</label>
+                        <input type="number" id="editFine" placeholder="Ex: 150000">
+                    </div>
+                    <div class="admin-field">
+                        <label>Pena Mínima (anos)</label>
+                        <input type="number" id="editMin" placeholder="Ex: 8">
+                    </div>
+                    <div class="admin-field">
+                        <label>Pena Recomendada (anos)</label>
+                        <input type="number" id="editRec" placeholder="Ex: 12">
+                    </div>
+                    <div class="admin-field">
+                        <label>Pena Máxima (anos)</label>
+                        <input type="number" id="editMax" placeholder="Ex: 16">
+                    </div>
+                    <div class="admin-field">
+                        <label>Pontos da Carta</label>
+                        <input type="number" id="editPoints" placeholder="Ex: 0">
+                    </div>
+                    <div class="admin-field">
+                        <label>Severidade</label>
+                        <select id="editSeverity">
+                            <option value="low">Baixa (Verde)</option>
+                            <option value="medium">Média (Amarelo)</option>
+                            <option value="high">Alta (Vermelho)</option>
+                            <option value="extreme">Extrema (Vinho)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="admin-buttons" id="adminButtons" style="display: none;">
+                    <button class="btn-save" onclick="saveCrime()">💾 Guardar Alterações</button>
+                    <button class="btn-export" onclick="exportData()">📥 Exportar JSON</button>
+                </div>
+            </div>
+
+            <div id="categoriesContainer">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="summary-box">
+                <h2 class="summary-title">Resumo</h2>
+                
+                <div class="selected-crimes" id="selectedCrimes">
+                    <div class="empty-state">Nenhum crime selecionado</div>
+                </div>
+
+                <div class="totals-section">
+                    <div class="total-fine-box">
+                        <div class="total-fine-label">Total multas</div>
+                        <div class="total-fine-value" id="totalFine">0 €</div>
+                    </div>
+
+                    <div class="sentences-grid">
+                        <div class="sentence-box">
+                            <div class="sentence-label">Mínima</div>
+                            <div class="sentence-value" id="minSentence">0</div>
+                        </div>
+                        <div class="sentence-box">
+                            <div class="sentence-label">Recomendada</div>
+                            <div class="sentence-value" id="recSentence">0</div>
+                        </div>
+                        <div class="sentence-box">
+                            <div class="sentence-label">Máxima</div>
+                            <div class="sentence-value" id="maxSentence">0</div>
+                        </div>
+                    </div>
+
+                    <div class="points-box">
+                        <span class="points-label">Redução de pontos</span>
+                        <span class="points-value" id="totalPoints">0</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-copy" onclick="copyArticles()">Copiar artigos</button>
+                    <button class="btn btn-clear" onclick="clearAll()">Limpar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURAÇÃO - ALTERA AQUI A TUA PASSWORD
+        const ADMIN_PASSWORD = 'capital2024'; // ← MUDA ISTO PARA A TUA PASSWORD
+        
+        // Dados iniciais dos crimes (vêm do crimes.json na versão web)
+        let crimesData = {
+            categories: [
+                {
+                    id: "road",
+                    name: "Contraordenações Rodoviárias",
+                    crimes: [
+                        { id: "road-1", article: "27", name: "Limites Gerais de Velocidade (Leve)", fine: 3000, min: 0, rec: 0, max: 0, points: 1, severity: "low" },
+                        { id: "road-2", article: "28", name: "Excesso de Velocidade (Grave)", fine: 15000, min: 0, rec: 0, max: 0, points: 2, severity: "medium" }
+                    ]
+                },
+                {
+                    id: "nautical",
+                    name: "Contraordenações Náuticas",
+                    crimes: []
+                },
+                {
+                    id: "persons",
+                    name: "Crimes Contra as Pessoas",
+                    crimes: [
+                        { id: "persons-1", article: "1", name: "Homicídio", fine: 150000, min: 8, rec: 12, max: 16, points: 0, severity: "high" },
+                        { id: "persons-2", article: "2", name: "Homicídio Qualificado", fine: 300000, min: 12, rec: 19, max: 20, points: 0, severity: "extreme" },
+                        { id: "persons-3", article: "3", name: "Homicídio Privilegiado", fine: 30000, min: 1, rec: 3, max: 5, points: 0, severity: "medium" },
+                        { id: "persons-4", article: "4", name: "Ofensa à Integridade Física Simples", fine: 25000, min: 0, rec: 6, max: 6, points: 0, severity: "low" },
+                        { id: "persons-5", article: "5", name: "Ofensa à Integridade Física Grave", fine: 50000, min: 2, rec: 8, max: 10, points: 0, severity: "medium" },
+                        { id: "persons-6", article: "6", name: "Ofensa à Integridade Física Qualificada", fine: 75000, min: 0, rec: 2, max: 4, points: 0, severity: "medium" },
+                        { id: "persons-7", article: "7", name: "Ofensa à Integridade Física por Negligência", fine: 75000, min: 0, rec: 2, max: 2, points: 0, severity: "medium" },
+                        { id: "persons-8", article: "8", name: "Participação em Rixa", fine: 50000, min: 0, rec: 2, max: 2, points: 0, severity: "medium" },
+                        { id: "persons-9", article: "9", name: "Violência Doméstica", fine: 100000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
+                        { id: "persons-10", article: "10", name: "Maustratos", fine: 50000, min: 0, rec: 2, max: 3, points: 0, severity: "medium" },
+                        { id: "persons-11", article: "11", name: "Violação de Regras de Segurança", fine: 25000, min: 0, rec: 1, max: 2, points: 0, severity: "low" },
+                        { id: "persons-12", article: "12", name: "Ameaça", fine: 20000, min: 0, rec: 0, max: 1, points: 0, severity: "low" }
+                    ]
+                },
+                {
+                    id: "property",
+                    name: "Crimes contra o Património",
+                    crimes: [
+                        { id: "prop-1", article: "13", name: "Roubo", fine: 100000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
+                        { id: "prop-2", article: "14", name: "Roubo Qualificado", fine: 200000, min: 3, rec: 8, max: 12, points: 0, severity: "extreme" },
+                        { id: "prop-3", article: "15", name: "Furto", fine: 50000, min: 0, rec: 2, max: 4, points: 0, severity: "medium" },
+                        { id: "prop-4", article: "16", name: "Furto Qualificado", fine: 100000, min: 1, rec: 4, max: 6, points: 0, severity: "high" },
+                        { id: "prop-5", article: "17", name: "Apropriação Indébita", fine: 30000, min: 0, rec: 1, max: 2, points: 0, severity: "low" },
+                        { id: "prop-6", article: "18", name: "Dano", fine: 25000, min: 0, rec: 1, max: 3, points: 0, severity: "low" },
+                        { id: "prop-7", article: "19", name: "Dano Qualificado", fine: 75000, min: 1, rec: 3, max: 5, points: 0, severity: "medium" },
+                        { id: "prop-8", article: "20", name: "Extorsão", fine: 150000, min: 2, rec: 6, max: 10, points: 0, severity: "high" }
+                    ]
+                },
+                {
+                    id: "cultural",
+                    name: "Crimes contra a Identidade Cultural",
+                    crimes: []
+                },
+                {
+                    id: "society",
+                    name: "Crimes contra a Vida em Sociedade",
+                    crimes: [
+                        { id: "soc-1", article: "21", name: "Posse de Arma Ilegal", fine: 80000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
+                        { id: "soc-2", article: "22", name: "Posse de Munições Ilegais", fine: 40000, min: 0, rec: 2, max: 3, points: 0, severity: "medium" },
+                        { id: "soc-3", article: "23", name: "Tráfico de Armas", fine: 250000, min: 5, rec: 10, max: 15, points: 0, severity: "extreme" },
+                        { id: "soc-4", article: "24", name: "Posse de Drogas (Consumo)", fine: 30000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
+                        { id: "soc-5", article: "25", name: "Tráfico de Drogas", fine: 300000, min: 5, rec: 12, max: 20, points: 0, severity: "extreme" },
+                        { id: "soc-6", article: "26", name: "Condução de Veículo em Estado de Embriaguez", fine: 50000, min: 0, rec: 1, max: 2, points: 3, severity: "medium" }
+                    ]
+                },
+                {
+                    id: "state",
+                    name: "Crimes contra o Estado",
+                    crimes: [
+                        { id: "state-1", article: "27", name: "Corrupção Ativa", fine: 200000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
+                        { id: "state-2", article: "28", name: "Corrupção Passiva", fine: 200000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
+                        { id: "state-3", article: "29", name: "Prevaricação", fine: 150000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
+                        { id: "state-4", article: "30", name: "Falsificação de Documentos", fine: 100000, min: 1, rec: 3, max: 6, points: 0, severity: "high" },
+                        { id: "state-5", article: "31", name: "Falsidade Testemunhal", fine: 80000, min: 0, rec: 2, max: 4, points: 0, severity: "medium" }
+                    ]
+                }
+            ]
+        };
+
+        const MAX_PRISON_YEARS = 25;
+        let selectedCrimes = [];
+        let currentEditingCrime = null;
+        let clickCount = 0;
+        let clickTimer = null;
+
+        // Carregar dados (tenta do localStorage primeiro, senão usa os defaults)
+        function loadData() {
+            const saved = localStorage.getItem('crimesDataCapital');
+            if (saved) {
+                crimesData = JSON.parse(saved);
+            }
+            renderCategories();
+        }
+
+        // Sistema de Password
+        function handleTitleClick() {
+            clickCount++;
+            
+            if (clickTimer) clearTimeout(clickTimer);
+            
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 2000);
+
+            if (clickCount === 5) {
+                document.getElementById('passwordModal').classList.add('active');
+                document.getElementById('passwordInput').focus();
+                clickCount = 0;
+            }
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === ADMIN_PASSWORD) {
+                document.getElementById('passwordModal').classList.remove('active');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordError').style.display = 'none';
+                openAdmin();
+            } else {
+                document.getElementById('passwordError').style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+
+        function closePasswordModal() {
+            document.getElementById('passwordModal').classList.remove('active');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('passwordError').style.display = 'none';
+        }
+
+        // Permitir Enter na password
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') checkPassword();
+            });
+        });
+
+        function openAdmin() {
+            document.getElementById('adminPanel').classList.add('active');
+            populateCategorySelect();
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').classList.remove('active');
+            document.getElementById('editForm').style.display = 'none';
+            document.getElementById('adminButtons').style.display = 'none';
+        }
+
+        function populateCategorySelect() {
+            const select = document.getElementById('categorySelect');
+            select.innerHTML = '<option value="">Selecionar Categoria...</option>';
+            
+            crimesData.categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.id;
+                option.textContent = cat.name;
+                select.appendChild(option);
+            });
+        }
+
+        function loadCrimesForEdit() {
+            const catId = document.getElementById('categorySelect').value;
+            const crimeSelect = document.getElementById('crimeSelect');
+            
+            crimeSelect.innerHTML = '<option value="">Selecionar Crime para Editar...</option>';
+            document.getElementById('editForm').style.display = 'none';
+            document.getElementById('adminButtons').style.display = 'none';
+
+            if (!catId) return;
+
+            const category = crimesData.categories.find(c => c.id === catId);
+            
+            const newOption = document.createElement('option');
+            newOption.value = 'NEW';
+            newOption.textContent = '+ Criar Novo Crime';
+            newOption.style.fontWeight = 'bold';
+            newOption.style.color = '#3182ce';
+            crimeSelect.appendChild(newOption);
+
+            category.crimes.forEach(crime => {
+                const option = document.createElement('option');
+                option.value = crime.id;
+                option.textContent = `Art. ${crime.article}: ${crime.name}`;
+                crimeSelect.appendChild(option);
+            });
+        }
+
+        function loadCrimeData() {
+            const crimeId = document.getElementById('crimeSelect').value;
+            const form = document.getElementById('editForm');
+            const buttons = document.getElementById('adminButtons');
+
+            if (!crimeId) {
+                form.style.display = 'none';
+                buttons.style.display = 'none';
+                return;
+            }
+
+            form.style.display = 'grid';
+            buttons.style.display = 'flex';
+
+            if (crimeId === 'NEW') {
+                document.getElementById('editArticle').value = '';
+                document.getElementById('editName').value = '';
+                document.getElementById('editFine').value = '';
+                document.getElementById('editMin').value = '';
+                document.getElementById('editRec').value = '';
+                document.getElementById('editMax').value = '';
+                document.getElementById('editPoints').value = '0';
+                document.getElementById('editSeverity').value = 'low';
+                currentEditingCrime = { isNew: true };
+            } else {
+                const catId = document.getElementById('categorySelect').value;
+                const category = crimesData.categories.find(c => c.id === catId);
+                const crime = category.crimes.find(c => c.id === crimeId);
+                
+                document.getElementById('editArticle').value = crime.article;
+                document.getElementById('editName').value = crime.name;
+                document.getElementById('editFine').value = crime.fine;
+                document.getElementById('editMin').value = crime.min;
+                document.getElementById('editRec').value = crime.rec;
+                document.getElementById('editMax').value = crime.max;
+                document.getElementById('editPoints').value = crime.points || 0;
+                document.getElementById('editSeverity').value = crime.severity || 'low';
+                
+                currentEditingCrime = { ...crime, categoryId: catId, isNew: false };
+            }
+        }
+
+        function saveCrime() {
+            const catId = document.getElementById('categorySelect').value;
+            const category = crimesData.categories.find(c => c.id === catId);
+            
+            const crimeData = {
+                article: document.getElementById('editArticle').value,
+                name: document.getElementById('editName').value,
+                fine: parseInt(document.getElementById('editFine').value) || 0,
+                min: parseInt(document.getElementById('editMin').value) || 0,
+                rec: parseInt(document.getElementById('editRec').value) || 0,
+                max: parseInt(document.getElementById('editMax').value) || 0,
+                points: parseInt(document.getElementById('editPoints').value) || 0,
+                severity: document.getElementById('editSeverity').value
+            };
+
+            if (currentEditingCrime.isNew) {
+                crimeData.id = `${catId}-${Date.now()}`;
+                category.crimes.push(crimeData);
+                alert('✅ Novo crime criado com sucesso!\n\n⚠️ NOTA: Esta alteração só é visível no teu browser.\nPara todos verem, exporta o JSON e atualiza no servidor.');
+            } else {
+                const index = category.crimes.findIndex(c => c.id === currentEditingCrime.id);
+                if (index > -1) {
+                    crimeData.id = currentEditingCrime.id;
+                    category.crimes[index] = crimeData;
+                    alert('✅ Crime atualizado!\n\n⚠️ NOTA: Esta alteração só é visível no teu browser.\nPara todos verem, exporta o JSON e atualiza no servidor.');
+                }
+            }
+
+            // Guardar no localStorage (apenas local)
+            localStorage.setItem('crimesDataCapital', JSON.stringify(crimesData));
+            
+            renderCategories();
+            loadCrimesForEdit();
+            
+            document.getElementById('crimeSelect').value = '';
+            document.getElementById('editForm').style.display = 'none';
+            document.getElementById('adminButtons').style.display = 'none';
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify(crimesData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'crimes-capital-config.json';
+            link.click();
+            
+            alert('📥 JSON exportado!\n\nPara atualizar para todos:\n1. Abre este ficheiro\n2. Copia todo o conteúdo\n3. Cola no ficheiro crimes.json do servidor\n4. Faz commit/push (GitHub) ou reupload (Vercel/Netlify)');
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoriesContainer');
+            container.innerHTML = '';
+
+            crimesData.categories.forEach((category, index) => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                categoryDiv.id = `cat-${category.id}`;
+                categoryDiv.style.animationDelay = `${index * 0.1}s`;
+
+                const header = document.createElement('button');
+                header.className = 'category-header';
+                header.onclick = () => toggleCategory(category.id);
+                header.innerHTML = `
+                    <span>${category.name}</span>
+                    <span class="arrow">⌄</span>
+                `;
+
+                const grid = document.createElement('div');
+                grid.className = 'crimes-grid';
+                grid.id = `grid-${category.id}`;
+
+                if (category.crimes && category.crimes.length > 0) {
+                    category.crimes.forEach(crime => {
+                        const card = createCrimeCard(crime);
+                        grid.appendChild(card);
+                    });
+                } else {
+                    grid.innerHTML = '<div style="color: #666; grid-column: 1/-1; text-align: center; padding: 30px; font-style: italic;">Nenhum crime registado nesta categoria</div>';
+                }
+
+                categoryDiv.appendChild(header);
+                categoryDiv.appendChild(grid);
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        function createCrimeCard(crime) {
+            const card = document.createElement('div');
+            card.className = `crime-card severity-${crime.severity || 'low'}`;
+            card.dataset.id = crime.id;
+            card.onclick = () => selectCrime(crime);
+
+            const isSelected = selectedCrimes.find(c => c.id === crime.id);
+            if (isSelected) card.classList.add('selected');
+
+            card.innerHTML = `
+                <div class="crime-number">Artigo nº ${crime.article}</div>
+                <div class="crime-name">${crime.name}</div>
+                <div class="crime-details">
+                    <span class="crime-fine">€ ${crime.fine.toLocaleString()}</span>
+                    <span class="crime-sentence">⏱ ${crime.min}-${crime.rec}-${crime.max} anos</span>
+                </div>
+            `;
+            return card;
+        }
+
+        function toggleCategory(id) {
+            const cat = document.getElementById(`cat-${id}`);
+            cat.classList.toggle('expanded');
+        }
+
+        function selectCrime(crime) {
+            const index = selectedCrimes.findIndex(c => c.id === crime.id);
+            
+            if (index > -1) {
+                selectedCrimes.splice(index, 1);
+            } else {
+                selectedCrimes.push(crime);
+            }
+            
+            updateUI();
+        }
+
+        function removeCrime(id) {
+            selectedCrimes = selectedCrimes.filter(c => c.id !== id);
+            updateUI();
+        }
+
+        function formatSentenceValue(years) {
+            if (years > MAX_PRISON_YEARS) {
+                return `<span class="exceeded">(${years})</span>${MAX_PRISON_YEARS}`;
+            }
+            return years;
+        }
+
+        function updateUI() {
+            document.querySelectorAll('.crime-card').forEach(card => {
+                const id = card.dataset.id;
+                if (selectedCrimes.find(c => c.id === id)) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+
+            const container = document.getElementById('selectedCrimes');
+            
+            if (selectedCrimes.length === 0) {
+                container.innerHTML = '<div class="empty-state">Nenhum crime selecionado</div>';
+            } else {
+                container.innerHTML = selectedCrimes.map(crime => `
+                    <div class="selected-crime-item">
+                        <div class="selected-crime-info">
+                            <h4>Artigo nº ${crime.article}</h4>
+                            <p>${crime.name}</p>
+                            <p>€ ${crime.fine.toLocaleString()} | ${crime.min}-${crime.rec}-${crime.max} anos</p>
+                        </div>
+                        <button class="remove-btn" onclick="removeCrime('${crime.id}')">×</button>
+                    </div>
+                `).join('');
+            }
+
+            const totalFine = selectedCrimes.reduce((sum, c) => sum + c.fine, 0);
+            const totalPoints = selectedCrimes.reduce((sum, c) => sum + (c.points || 0), 0);
+            
+            let minTotal = 0, recTotal = 0, maxTotal = 0;
+            selectedCrimes.forEach(c => {
+                minTotal += c.min;
+                recTotal += c.rec;
+                maxTotal += c.max;
+            });
+
+            document.getElementById('totalFine').textContent = totalFine.toLocaleString() + ' €';
+            document.getElementById('totalPoints').textContent = totalPoints;
+            
+            document.getElementById('minSentence').innerHTML = formatSentenceValue(minTotal);
+            document.getElementById('recSentence').innerHTML = formatSentenceValue(recTotal);
+            document.getElementById('maxSentence').innerHTML = formatSentenceValue(maxTotal);
+        }
+
+        function searchCrimes(query) {
+            const lowerQuery = query.toLowerCase();
+            
+            crimesData.categories.forEach(category => {
+                const grid = document.getElementById(`grid-${category.id}`);
+                const cards = grid.querySelectorAll('.crime-card');
+                let hasVisible = false;
+
+                cards.forEach(card => {
+                    const name = card.querySelector('.crime-name').textContent.toLowerCase();
+                    const article = card.querySelector('.crime-number').textContent.toLowerCase();
+                    
+                    if (name.includes(lowerQuery) || article.includes(lowerQuery)) {
+                        card.style.display = 'block';
+                        hasVisible = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (query.length > 0 && hasVisible) {
+                    document.getElementById(`cat-${category.id}`).classList.add('expanded');
+                }
+            });
+        }
+
+        function copyArticles() {
+            if (selectedCrimes.length === 0) {
+                alert('Nenhum crime selecionado para copiar!');
+                return;
+            }
+
+            const text = selectedCrimes.map(c => 
+                `Artigo ${c.article}: ${c.name} | Multa: €${c.fine.toLocaleString()} | Pena: ${c.min}-${c.rec}-${c.max} anos`
+            ).join('\n');
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Artigos copiados para a clipboard!');
+            });
+        }
+
+        function clearAll() {
+            selectedCrimes = [];
+            updateUI();
+        }
+
+        function showTab(tab, event) {
+            event.preventDefault();
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function externalLink(event) {
+            // Links externos abrem normalmente
+        }
+
+        // Inicializar
+        loadData();
+    </script>
+</body>
+</html>
