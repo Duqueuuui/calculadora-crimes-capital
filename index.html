@@ -1179,8 +1179,7 @@
             card.className = `crime-card severity-${crime.severity || 'low'}`;
             card.dataset.id = crime.id;
             card.onclick = () => selectCrime(crime);
-            const isSelected = selectedCrimes.find(c => c.id === crime.id);
-            if (isSelected) card.classList.add('selected');
+            // Não adicionar classe selected aqui, deixar o updateUI tratar disso
             card.innerHTML = `
                 <div class="crime-number">Artigo nº ${crime.article}</div>
                 <div class="crime-name">${crime.name}</div>
@@ -1217,10 +1216,20 @@
         }
 
         function updateUI() {
+            // CORREÇÃO: Remover selected de todos primeiro, depois adicionar só aos selecionados
             document.querySelectorAll('.crime-card').forEach(card => {
-                const id = card.dataset.id;
-                card.classList.toggle('selected', selectedCrimes.find(c => c.id === id));
+                card.classList.remove('selected');
             });
+            
+            // Adicionar classe selected apenas aos cards que estão em selectedCrimes
+            selectedCrimes.forEach(crime => {
+                const card = document.querySelector(`.crime-card[data-id="${crime.id}"]`);
+                if (card) {
+                    card.classList.add('selected');
+                }
+            });
+            
+            // Atualizar painel direito
             const container = document.getElementById('selectedCrimes');
             if (selectedCrimes.length === 0) {
                 container.innerHTML = '<div class="empty-state">Nenhum crime selecionado</div>';
@@ -1236,6 +1245,7 @@
                     </div>
                 `).join('');
             }
+            
             const totalFine = selectedCrimes.reduce((sum, c) => sum + c.fine, 0);
             const totalPoints = selectedCrimes.reduce((sum, c) => sum + (c.points || 0), 0);
             let minTotal = 0, recTotal = 0, maxTotal = 0;
@@ -1244,6 +1254,7 @@
                 recTotal += c.rec;
                 maxTotal += c.max;
             });
+            
             document.getElementById('totalFine').textContent = totalFine.toLocaleString() + ' €';
             document.getElementById('totalPoints').textContent = totalPoints;
             document.getElementById('minSentence').innerHTML = formatSentenceValue(minTotal);
