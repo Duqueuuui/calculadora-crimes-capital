@@ -808,8 +808,8 @@
         // PASSWORD - ALTERA AQUI
         const ADMIN_PASSWORD = 'capital2024';
 
-        // DADOS ORGANIZADOS SEGUNDO O ÍNDICE DO CÓDIGO PENAL
-        const CRIMES_DATA = {
+        // DADOS PADRÃO (fallback se não conseguir carregar o JSON)
+        const DEFAULT_CRIMES_DATA = {
             categories: [
                 {
                     id: "rodoviarias",
@@ -856,11 +856,9 @@
                     id: "pessoas",
                     name: "Crimes contra as Pessoas (Livro C - Título I)",
                     crimes: [
-                        // Capítulo I - Crimes contra a vida (Art. 1-3)
                         { id: "c1", article: "1", name: "Homicídio", fine: 900000, min: 8, rec: 12, max: 16, points: 0, severity: "high" },
                         { id: "c2", article: "2", name: "Homicídio Qualificado", fine: 1350000, min: 12, rec: 18, max: 25, points: 0, severity: "extreme" },
                         { id: "c3", article: "3", name: "Homicídio Privilegiado", fine: 540000, min: 8, rec: 12, max: 16, points: 0, severity: "high" },
-                        // Capítulo II - Crimes contra a integridade física (Art. 4-11)
                         { id: "c4", article: "4", name: "Ofensa à Integridade Física Simples", fine: 36000, min: 0, rec: 1, max: 3, points: 0, severity: "low" },
                         { id: "c5", article: "5", name: "Ofensa à Integridade Física Grave", fine: 90000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
                         { id: "c6", article: "6", name: "Ofensa à Integridade Física Qualificada", fine: 180000, min: 3, rec: 7, max: 12, points: 0, severity: "high" },
@@ -869,7 +867,6 @@
                         { id: "c9", article: "9", name: "Violência Doméstica", fine: 72000, min: 2, rec: 3, max: 5, points: 0, severity: "high" },
                         { id: "c10", article: "10", name: "Maustratos", fine: 90000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
                         { id: "c11", article: "11", name: "Violação das Regras de Segurança", fine: 45000, min: 1, rec: 3, max: 5, points: 0, severity: "high" },
-                        // Capítulo III - Crimes contra a liberdade pessoal (Art. 12-18)
                         { id: "c12", article: "12", name: "Ameaça", fine: 45000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
                         { id: "c13", article: "13", name: "Coação", fine: 90000, min: 0, rec: 1, max: 3, points: 0, severity: "medium" },
                         { id: "c14", article: "14", name: "Sequestro", fine: 135000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
@@ -877,15 +874,12 @@
                         { id: "c16", article: "16", name: "Tráfico de Pessoas", fine: 270000, min: 3, rec: 6, max: 10, points: 0, severity: "extreme" },
                         { id: "c17", article: "17", name: "Rapto", fine: 180000, min: 3, rec: 9, max: 15, points: 0, severity: "high" },
                         { id: "c18", article: "18", name: "Tomada de Reféns", fine: 225000, min: 2, rec: 6, max: 10, points: 0, severity: "high" },
-                        // Capítulo IV - Crimes contra a honra (Art. 22-25)
                         { id: "c22", article: "22", name: "Difamação", fine: 90000, min: 0, rec: 0, max: 1, points: 0, severity: "medium" },
                         { id: "c23", article: "23", name: "Injúria", fine: 45000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
                         { id: "c24", article: "24", name: "Equiparação a Injúria ou Difamação", fine: 45000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
                         { id: "c25", article: "25", name: "Publicidade e Calúnia", fine: 90000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
-                        // Capítulo V - Crimes contra a reserva de vida privada (Art. 26-27)
                         { id: "c26", article: "26", name: "Violação de Domicílio", fine: 54000, min: 0, rec: 1, max: 2, points: 0, severity: "medium" },
                         { id: "c27", article: "27", name: "Introdução em Lugar Vedado ao Público", fine: 18000, min: 0, rec: 0, max: 0, points: 0, severity: "low" },
-                        // Capítulo VI - Crimes contra outros bens jurídicos pessoais (Art. 32-34)
                         { id: "c32", article: "32", name: "Gravações e Fotografias Ilícitas", fine: 18000, min: 0, rec: 0, max: 1, points: 0, severity: "low" },
                         { id: "c33", article: "33", name: "Omissão de Auxílio", fine: 27000, min: 0, rec: 0, max: 2, points: 0, severity: "low" },
                         { id: "c34", article: "34", name: "Subtracção às Garantias do Estado", fine: 135000, min: 2, rec: 6, max: 10, points: 0, severity: "high" }
@@ -966,18 +960,39 @@
             ]
         };
 
-        let crimesData = JSON.parse(JSON.stringify(CRIMES_DATA));
+        let crimesData = JSON.parse(JSON.stringify(DEFAULT_CRIMES_DATA));
         const MAX_PRISON_YEARS = 25;
         let selectedCrimes = [];
         let currentEditingCrime = null;
         let clickCount = 0;
         let clickTimer = null;
 
-        function loadData() {
+        // NOVO: Carregar dados do ficheiro JSON externo
+        async function loadData() {
+            try {
+                // Tentar carregar do ficheiro JSON no servidor
+                const response = await fetch('crimes-capital-config.json');
+                if (response.ok) {
+                    const jsonData = await response.json();
+                    crimesData = jsonData;
+                    console.log('✅ Dados carregados do ficheiro JSON');
+                } else {
+                    console.log('⚠️ Ficheiro JSON não encontrado, usando dados padrão');
+                    crimesData = JSON.parse(JSON.stringify(DEFAULT_CRIMES_DATA));
+                }
+            } catch (error) {
+                console.log('⚠️ Erro ao carregar JSON:', error);
+                crimesData = JSON.parse(JSON.stringify(DEFAULT_CRIMES_DATA));
+            }
+            
+            // Verificar se há dados no localStorage (edições locais)
             const saved = localStorage.getItem('crimesDataCapital');
             if (saved) {
+                // Usar dados locais se existirem (prioridade ao utilizador)
                 crimesData = JSON.parse(saved);
+                console.log('✅ Dados carregados do localStorage');
             }
+            
             renderCategories();
         }
 
@@ -1128,6 +1143,7 @@
                 }
             }
 
+            // Guardar no localStorage para uso local
             localStorage.setItem('crimesDataCapital', JSON.stringify(crimesData));
             renderCategories();
             loadCrimesForEdit();
