@@ -1,0 +1,1210 @@
+{
+  "categories": [
+    {
+      "id": "rodoviarias",
+      "name": "Contraordenações Rodoviárias (Livro D)",
+      "crimes": [
+        {
+          "id": "c84",
+          "article": "84",
+          "name": "Condução sem Capacete",
+          "fine": 1500,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 3,
+          "severity": "low"
+        },
+        {
+          "id": "c85",
+          "article": "85",
+          "name": "Condução sem Carta",
+          "fine": 5400,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c86",
+          "article": "86",
+          "name": "Condução de Viatura sem Matrícula",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c87",
+          "article": "87",
+          "name": "Condução de Viatura sem Calçado",
+          "fine": 5400,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c88",
+          "article": "88",
+          "name": "Condução Desordeira",
+          "fine": 90000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c89",
+          "article": "89",
+          "name": "Condução em Sentido Proibido",
+          "fine": 9000,
+          "min": 0,
+          "rec": 0,
+          "max": 3,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c90",
+          "article": "90",
+          "name": "Condução sob Influência de Álcool",
+          "fine": 36000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c91",
+          "article": "91",
+          "name": "Condução sob Influência de Estupefacientes",
+          "fine": 36000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c92",
+          "article": "92",
+          "name": "Destruição de Património Nacional",
+          "fine": 36000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c93",
+          "article": "93",
+          "name": "Estacionamento Indevido",
+          "fine": 5400,
+          "min": 0,
+          "rec": 0,
+          "max": 3,
+          "points": 2,
+          "severity": "medium"
+        },
+        {
+          "id": "c94a",
+          "article": "94.1",
+          "name": "Excesso de Velocidade (Leve)",
+          "fine": 5400,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c94b",
+          "article": "94.2",
+          "name": "Excesso de Velocidade (Grave)",
+          "fine": 27000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 2,
+          "severity": "medium"
+        },
+        {
+          "id": "c94c",
+          "article": "94.3",
+          "name": "Excesso de Velocidade (Muito Grave)",
+          "fine": 45000,
+          "min": 0,
+          "rec": 2,
+          "max": 5,
+          "points": 4,
+          "severity": "high"
+        },
+        {
+          "id": "c95",
+          "article": "95",
+          "name": "Infração de Sinais",
+          "fine": 10800,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 4,
+          "severity": "medium"
+        },
+        {
+          "id": "c96",
+          "article": "96",
+          "name": "Inversão de Marcha Indevida",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c97",
+          "article": "97",
+          "name": "Estacionamento Proibido",
+          "fine": 6300,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c98a",
+          "article": "98.1",
+          "name": "Uso de Neons Ilegais",
+          "fine": 7200,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c98b",
+          "article": "98.2",
+          "name": "Vidros Escurecidos Ilegais",
+          "fine": 4500,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c98c",
+          "article": "98.3",
+          "name": "Alteração de Características Ilegal",
+          "fine": 3150,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c99",
+          "article": "99",
+          "name": "Obstrução da Via Pública",
+          "fine": 2700,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c100",
+          "article": "100",
+          "name": "Participação em Corrida Ilegal",
+          "fine": 36000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c101",
+          "article": "101",
+          "name": "Passagem de Linha Contínua",
+          "fine": 2700,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c102",
+          "article": "102",
+          "name": "Abuso Excessivo da Buzina",
+          "fine": 3600,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c103",
+          "article": "103",
+          "name": "Uso de Aparelho Eletrónico durante Condução",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c104",
+          "article": "104",
+          "name": "Taxa de Veículo Apreendida",
+          "fine": 1800,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c105",
+          "article": "105",
+          "name": "Circular de Luzes Apagadas",
+          "fine": 6300,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c106",
+          "article": "106",
+          "name": "Má Conservação da Viatura",
+          "fine": 13500,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c107a",
+          "article": "107.1",
+          "name": "Viatura sem Seguro",
+          "fine": 27000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c107b",
+          "article": "107.2",
+          "name": "Viatura sem Inspeção",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c108",
+          "article": "108",
+          "name": "Paragem de Viatura Não Permitida",
+          "fine": 1800,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        }
+      ]
+    },
+    {
+      "id": "nauticas",
+      "name": "Contraordenações Náuticas",
+      "crimes": []
+    },
+    {
+      "id": "pessoas",
+      "name": "Crimes contra as Pessoas (Livro C - Título I)",
+      "crimes": [
+        {
+          "id": "c1",
+          "article": "1",
+          "name": "Homicídio",
+          "fine": 900000,
+          "min": 8,
+          "rec": 12,
+          "max": 16,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c2",
+          "article": "2",
+          "name": "Homicídio Qualificado",
+          "fine": 1350000,
+          "min": 12,
+          "rec": 18,
+          "max": 25,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c3",
+          "article": "3",
+          "name": "Homicídio Privilegiado",
+          "fine": 540000,
+          "min": 8,
+          "rec": 12,
+          "max": 16,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c4",
+          "article": "4",
+          "name": "Ofensa à Integridade Física Simples",
+          "fine": 36000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c5",
+          "article": "5",
+          "name": "Ofensa à Integridade Física Grave",
+          "fine": 90000,
+          "min": 2,
+          "rec": 6,
+          "max": 10,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c6",
+          "article": "6",
+          "name": "Ofensa à Integridade Física Qualificada",
+          "fine": 180000,
+          "min": 3,
+          "rec": 7,
+          "max": 12,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c7",
+          "article": "7",
+          "name": "Ofensa à Integridade Física por Negligência",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c8",
+          "article": "8",
+          "name": "Participação em Rixa",
+          "fine": 180000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c9",
+          "article": "9",
+          "name": "Violência Doméstica",
+          "fine": 72000,
+          "min": 2,
+          "rec": 3,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c10",
+          "article": "10",
+          "name": "Maustratos",
+          "fine": 90000,
+          "min": 1,
+          "rec": 3,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c11",
+          "article": "11",
+          "name": "Violação das Regras de Segurança",
+          "fine": 45000,
+          "min": 1,
+          "rec": 3,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c12",
+          "article": "12",
+          "name": "Ameaça",
+          "fine": 45000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c13",
+          "article": "13",
+          "name": "Coação",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c14",
+          "article": "14",
+          "name": "Sequestro",
+          "fine": 135000,
+          "min": 2,
+          "rec": 6,
+          "max": 10,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c15",
+          "article": "15",
+          "name": "Escravidão",
+          "fine": 270000,
+          "min": 5,
+          "rec": 7,
+          "max": 10,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c16",
+          "article": "16",
+          "name": "Tráfico de Pessoas",
+          "fine": 270000,
+          "min": 3,
+          "rec": 6,
+          "max": 10,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c17",
+          "article": "17",
+          "name": "Rapto",
+          "fine": 180000,
+          "min": 3,
+          "rec": 9,
+          "max": 15,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c18",
+          "article": "18",
+          "name": "Tomada de Reféns",
+          "fine": 225000,
+          "min": 2,
+          "rec": 6,
+          "max": 10,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c22",
+          "article": "22",
+          "name": "Difamação",
+          "fine": 90000,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c23",
+          "article": "23",
+          "name": "Injúria",
+          "fine": 45000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c24",
+          "article": "24",
+          "name": "Equiparação a Injúria ou Difamação",
+          "fine": 45000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c25",
+          "article": "25",
+          "name": "Publicidade e Calúnia",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c26",
+          "article": "26",
+          "name": "Violação de Domicílio",
+          "fine": 54000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c27",
+          "article": "27",
+          "name": "Introdução em Lugar Vedado ao Público",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c32",
+          "article": "32",
+          "name": "Gravações e Fotografias Ilícitas",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c33",
+          "article": "33",
+          "name": "Omissão de Auxílio",
+          "fine": 27000,
+          "min": 0,
+          "rec": 0,
+          "max": 2,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c34",
+          "article": "34",
+          "name": "Subtracção às Garantias do Estado",
+          "fine": 135000,
+          "min": 2,
+          "rec": 6,
+          "max": 10,
+          "points": 0,
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "id": "patrimonio",
+      "name": "Crimes contra o Património (Livro C - Título II)",
+      "crimes": [
+        {
+          "id": "c35",
+          "article": "35",
+          "name": "Furto",
+          "fine": 45000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c36",
+          "article": "36",
+          "name": "Furto Qualificado",
+          "fine": 90000,
+          "min": 2,
+          "rec": 4,
+          "max": 8,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c37",
+          "article": "37",
+          "name": "Abuso de Confiança",
+          "fine": 180000,
+          "min": 1,
+          "rec": 4,
+          "max": 8,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c38",
+          "article": "38",
+          "name": "Furto de Uso de Veículo",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c39",
+          "article": "39",
+          "name": "Apropriação Ilícita (Coisa Achada)",
+          "fine": 18000,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c40",
+          "article": "40",
+          "name": "Roubo",
+          "fine": 360000,
+          "min": 1,
+          "rec": 4,
+          "max": 15,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c41",
+          "article": "41",
+          "name": "Dano",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c42",
+          "article": "42",
+          "name": "Burla",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c43",
+          "article": "43",
+          "name": "Extorsão",
+          "fine": 270000,
+          "min": 0,
+          "rec": 2,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c44",
+          "article": "44",
+          "name": "Apropriação Ilícita",
+          "fine": 60000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c45",
+          "article": "45",
+          "name": "Administração Danosa",
+          "fine": 90000,
+          "min": 0,
+          "rec": 2,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "id": "identidade",
+      "name": "Crimes contra a Identidade Cultural",
+      "crimes": []
+    },
+    {
+      "id": "sociedade",
+      "name": "Crimes contra a Vida em Sociedade (Livro C - Título III)",
+      "crimes": [
+        {
+          "id": "c46",
+          "article": "46",
+          "name": "Falsificação ou Contrafação de Documento",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c47",
+          "article": "47",
+          "name": "Atestado Falso",
+          "fine": 180000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c48",
+          "article": "48",
+          "name": "Uso de Documento de Identificação Alheio",
+          "fine": 135000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c49",
+          "article": "49",
+          "name": "Tráfico de Substâncias Ilícitas",
+          "fine": 360000,
+          "min": 4,
+          "rec": 9,
+          "max": 15,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c50",
+          "article": "50",
+          "name": "Contrafação de Moeda",
+          "fine": 360000,
+          "min": 3,
+          "rec": 7,
+          "max": 12,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c51",
+          "article": "51",
+          "name": "Aquisição de Moeda Falsa",
+          "fine": 360000,
+          "min": 3,
+          "rec": 7,
+          "max": 12,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c52",
+          "article": "52",
+          "name": "Posse de Arma Proibida",
+          "fine": 135000,
+          "min": 2,
+          "rec": 4,
+          "max": 8,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c53",
+          "article": "53",
+          "name": "Perda de Arma",
+          "fine": 0,
+          "min": 0,
+          "rec": 0,
+          "max": 0,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c54",
+          "article": "54",
+          "name": "Violação do Espaço Aéreo (Drone)",
+          "fine": 36000,
+          "min": 0,
+          "rec": 0,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c55",
+          "article": "55",
+          "name": "Atentado à Segurança de Transporte Rodoviário",
+          "fine": 90000,
+          "min": 1,
+          "rec": 4,
+          "max": 9,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c56",
+          "article": "56",
+          "name": "Condução Perigosa de Veículo Rodoviário",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c57",
+          "article": "57",
+          "name": "Associação Criminosa",
+          "fine": 450000,
+          "min": 3,
+          "rec": 7,
+          "max": 12,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c58",
+          "article": "58",
+          "name": "Participação em Motim",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c59",
+          "article": "59",
+          "name": "Desobediência à Ordem de Dispersão",
+          "fine": 90000,
+          "min": 0,
+          "rec": 0,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c60",
+          "article": "60",
+          "name": "Ameaça com Prática de Crime",
+          "fine": 180000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c61",
+          "article": "61",
+          "name": "Abuso de Designação, Sinal ou Uniforme",
+          "fine": 135000,
+          "min": 0,
+          "rec": 0,
+          "max": 3,
+          "points": 0,
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "id": "estado",
+      "name": "Crimes contra o Estado (Livro C - Título IV)",
+      "crimes": [
+        {
+          "id": "c62",
+          "article": "62",
+          "name": "Traição à Pátria",
+          "fine": 900000,
+          "min": 10,
+          "rec": 15,
+          "max": 20,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c63",
+          "article": "63",
+          "name": "Violação de Segredo de Estado",
+          "fine": 540000,
+          "min": 2,
+          "rec": 6,
+          "max": 10,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c64",
+          "article": "64",
+          "name": "Alteração Violenta do Estado de Direito",
+          "fine": 360000,
+          "min": 3,
+          "rec": 8,
+          "max": 15,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c65",
+          "article": "65",
+          "name": "Sabotagem",
+          "fine": 270000,
+          "min": 3,
+          "rec": 6,
+          "max": 10,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c66",
+          "article": "66",
+          "name": "Perturbação de Órgão Constitucional",
+          "fine": 180000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c67",
+          "article": "67",
+          "name": "Tráfico de Influências",
+          "fine": 180000,
+          "min": 0,
+          "rec": 2,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c68",
+          "article": "68",
+          "name": "Resistência e Coação sobre Funcionário",
+          "fine": 36000,
+          "min": 1,
+          "rec": 3,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c69",
+          "article": "69",
+          "name": "Desobediência",
+          "fine": 36000,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "low"
+        },
+        {
+          "id": "c70",
+          "article": "70",
+          "name": "Tirada de Presos",
+          "fine": 180000,
+          "min": 5,
+          "rec": 7,
+          "max": 10,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c71",
+          "article": "71",
+          "name": "Evasão",
+          "fine": 45000,
+          "min": 0,
+          "rec": 1,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c72",
+          "article": "72",
+          "name": "Usurpação de Funções",
+          "fine": 90000,
+          "min": 0,
+          "rec": 0,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c73",
+          "article": "73",
+          "name": "Falsidade de Depoimento",
+          "fine": 90000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c74",
+          "article": "74",
+          "name": "Suborno",
+          "fine": 180000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c75",
+          "article": "75",
+          "name": "Denúncia Caluniosa",
+          "fine": 180000,
+          "min": 0,
+          "rec": 2,
+          "max": 8,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c76",
+          "article": "76",
+          "name": "Simulação de Crime",
+          "fine": 90000,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c77",
+          "article": "77",
+          "name": "Favorecimento Pessoal",
+          "fine": 180000,
+          "min": 0,
+          "rec": 2,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c78",
+          "article": "78",
+          "name": "Favorecimento por Funcionário",
+          "fine": 180000,
+          "min": 2,
+          "rec": 4,
+          "max": 7,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c79",
+          "article": "79",
+          "name": "Branqueamento",
+          "fine": 0,
+          "min": 0,
+          "rec": 6,
+          "max": 12,
+          "points": 0,
+          "severity": "extreme"
+        },
+        {
+          "id": "c80",
+          "article": "80",
+          "name": "Denegação de Justiça e Prevaricação",
+          "fine": 360000,
+          "min": 1,
+          "rec": 4,
+          "max": 8,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c81",
+          "article": "81",
+          "name": "Denegação de Justiça (Funcionário)",
+          "fine": 90000,
+          "min": 0,
+          "rec": 0,
+          "max": 2,
+          "points": 0,
+          "severity": "medium"
+        },
+        {
+          "id": "c82",
+          "article": "82",
+          "name": "Peculato",
+          "fine": 180000,
+          "min": 1,
+          "rec": 4,
+          "max": 8,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c83",
+          "article": "83",
+          "name": "Abuso de Poder",
+          "fine": 135000,
+          "min": 0,
+          "rec": 1,
+          "max": 3,
+          "points": 0,
+          "severity": "high"
+        }
+      ]
+    }
+  ]
+}
