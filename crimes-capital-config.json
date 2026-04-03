@@ -847,15 +847,59 @@
           "severity": "high"
         },
         {
-          "id": "c52",
+          "id": "c52a",
           "article": "52",
-          "name": "Posse de Arma Proibida",
+          "name": "Posse de Arma Proibida - Equipamentos militares e material de guerra, armas biológicas, químicas, radioativas ou explosivas",
           "fine": 135000,
           "min": 2,
+          "rec": 4,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c52b",
+          "article": "52",
+          "name": "Posse de Arma Proibida - Produtos para desenvolvimento/produção de armas biológicas, químicas ou radioativas",
+          "fine": 90000,
+          "min": 1,
           "rec": 4,
           "max": 8,
           "points": 0,
           "severity": "high"
+        },
+        {
+          "id": "c52c",
+          "article": "52",
+          "name": "Posse de Arma Proibida - Arma de calibre médio ou alto (espingarda ou carabina)",
+          "fine": 135000,
+          "min": 2,
+          "rec": 4,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c52d",
+          "article": "52",
+          "name": "Posse de Arma Proibida - Arma de calibre ligeiro sem licença para o seu porte",
+          "fine": 90000,
+          "min": 2,
+          "rec": 3,
+          "max": 5,
+          "points": 0,
+          "severity": "high"
+        },
+        {
+          "id": "c52e",
+          "article": "52",
+          "name": "Posse de Arma Proibida - Arma de calibre ligeiro com licença para o seu porte",
+          "fine": 45000,
+          "min": 0,
+          "rec": 0,
+          "max": 1,
+          "points": 0,
+          "severity": "medium"
         },
         {
           "id": "c53",
