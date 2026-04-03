@@ -51,7 +51,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
         }
 
         .header-left {
@@ -430,26 +429,6 @@
             gap: 12px;
         }
 
-        .category-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--bg-tertiary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.875rem;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-weight: 700;
-        }
-
-        .category.expanded .category-icon {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-color: var(--accent);
-        }
-
         .category-header .arrow {
             transition: transform 0.3s;
             color: var(--text-muted);
@@ -598,9 +577,6 @@
             margin-bottom: 24px;
             padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .summary-list {
@@ -1108,7 +1084,6 @@
                         { id: "c49", article: "49", name: "Tráfico de Substâncias Ilícitas", fine: 360000, min: 4, rec: 9, max: 15, points: 0, severity: "extreme" },
                         { id: "c50", article: "50", name: "Contrafação de Moeda", fine: 360000, min: 3, rec: 7, max: 12, points: 0, severity: "high" },
                         { id: "c51", article: "51", name: "Aquisição de Moeda Falsa", fine: 360000, min: 3, rec: 7, max: 12, points: 0, severity: "high" },
-                        // Artigo 52 - Posse de Arma Proibida (detalhado conforme a imagem)
                         { id: "c52a", article: "52", name: "Posse de Arma Proibida - Equipamentos militares e material de guerra, armas biológicas, químicas, radioativas ou explosivas", fine: 135000, min: 2, rec: 4, max: 5, points: 0, severity: "high" },
                         { id: "c52b", article: "52", name: "Posse de Arma Proibida - Produtos para desenvolvimento/produção de armas biológicas, químicas ou radioativas", fine: 90000, min: 1, rec: 4, max: 8, points: 0, severity: "high" },
                         { id: "c52c", article: "52", name: "Posse de Arma Proibida - Arma de calibre médio ou alto (espingarda ou carabina)", fine: 135000, min: 2, rec: 4, max: 5, points: 0, severity: "high" },
